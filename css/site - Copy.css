@@ -1,0 +1,692 @@
+/* #iVirksomhedsrettetIndsats {
+cursor: pointer;} */
+
+/*
+.KPIGroupComponentLink:hover .KPIGroupComponentToolTip {
+    display: block;
+}
+
+
+.KPIGroupComponentToolTip {
+    display: none; 
+    background: #C8C8C8;
+    margin-left: 28px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1000;
+    width:200px;
+    height:100px;
+}
+
+.KPIGroupComponentLink {
+    margin:100px;
+}
+*/
+
+
+
+div.rfTooltip {
+  width: 100px;
+  height: auto;
+}
+
+.KPIGroupComponentLink {
+cursor: pointer;}
+
+a.dbTitle.home-arrow {
+  /*display: inline-block;*/
+  /*vertical-align: -50%;*/
+}
+
+body.detailPage {
+background-color: #f4f4f4;
+}
+
+footer {
+/*background-color: #f4f4f4;*/
+}
+
+.download{
+        /*width: 200px;
+    height: 100px;*/
+    /* Rotate div */
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+    transform: rotate(90deg);
+}
+
+.header_block_container
+{
+    /*text-align:center;*/
+    /*display:table;*/
+    background-color:#242424;
+    overflow:hidden;
+}
+
+.header_block1 {
+    /*float: left;
+    display: inline;*/
+    /*width: 50%;*/
+}
+
+@media (min-width: 600px) {
+    .header_block1_lg {
+        float: left;
+        display: inline;
+        width: 50%;
+    }
+}
+
+.header_block2 {
+    color: #f5f5f5;
+    /*width: 50%;*/
+    font-size: 14px;
+
+}
+
+@media (min-width: 600px) {
+    .header_block2_lg {
+        float: right;
+        display: inline;
+        color: #f5f5f5;
+        /*width: 50%;*/
+        text-align: right;
+        clear: right;
+    }
+}
+
+
+.dbTitle a {
+  margin-top: 0!important;
+  margin-bottom: 0!important;
+}
+
+
+
+/* Farver til figurer*/
+
+.chart-color-1 {
+  fill: #5a9bd4;
+  background: #5a9bd4;
+  color: #5a9bd4;
+}
+
+line.chart-color-1 {
+  stroke: #5a9bd4;
+}
+
+.chart-color-2 {
+  fill: #7ac36a;
+  background: #7ac36a;
+  color: #7ac36a;
+}
+
+line.chart-color-2 {
+  stroke: #7ac36a;
+}
+
+.chart-color-3 {
+  fill: #f15a60;
+  background: #f15a60;
+  color: #f15a60;
+}
+
+line.chart-color-3 {
+  stroke: #f15a60;
+}
+
+.chart-color-4 {
+  fill: #faa65b;
+  background: #faa65b;
+  color: #faa65b;
+}
+
+line.chart-color-4 {
+  stroke: #faa65b;
+}
+
+.chart-color-5 {
+  fill: #9e67ab;
+  background: #9e67ab;
+  color: #9e67ab;
+}
+
+line.chart-color-5 {
+  stroke: #9e67ab;
+}
+
+.chart-color-6 {
+  fill: #d77fb4;
+  background: #d77fb4;
+  color: #9e67ab;
+}
+
+line.chart-color-6 {
+  stroke: #d77fb4;
+}
+
+.chart-color-7 {
+  fill: #ce7058;
+  background: #ce7058;
+  color: #ce7058;
+}
+
+line.chart-color-7 {
+  stroke: #ce7058;
+}
+
+.chart-color-8 {
+  fill: #737373;
+  background: #737373;
+  color: #ce7058;
+}
+
+line.chart-color-8 {
+  stroke: #737373;
+}
+
+.chart-color-9 {
+  fill: #6CDEC7;
+  background: #6CDEC7;
+  color: #6CDEC7;
+}
+
+/*.rfLock.loading {
+  color: #000;
+  background: #fff;
+}
+
+.rfError {
+  color: #000;
+  background: #f7d9d9;
+  border: 1px solid #f28e92;
+}
+
+.k-window .k-header {
+  background-color: #f5f5f5;
+  border-bottom: 0;
+}
+
+.k-window .k-header .k-window-title {
+  color: #000;
+}
+
+.rfModalBody {
+  background-color: #fff;
+}
+
+.formItems .form-item label {
+  color: #333;
+}
+
+.formItems .form-item .form-item-main .k-dropdown-wrap.k-state-focused,.formItems .form-item .form-item-main .k-dropdown-wrap.k-state-hover {
+  background-color: #e8e8e8;
+  border: 1px solid #ccc;
+  box-shadow: none;
+}
+
+.formItems .form-item .form-item-main .k-picker-wrap,.formItems .form-item .form-item-main .k-select,.formItems .form-item .form-item-main .k-state-focused,.formItems .form-item .form-item-main .k-widget {
+  background: 0 0;
+  border: 0;
+}
+
+.formItems .form-item .form-item-main .k-datepicker {
+  border: 1px solid #ccc!important;
+}
+
+.formItems .form-item .k-multiselect,.formItems .form-item .k-multiselect-wrap {
+  border: 1px solid #ccc;
+}
+
+.formItems .form-item input[type=text] {
+  background: #fff;
+}
+
+.formItems .form-item select {
+  border: 1px solid #ccc;
+}
+
+.formContainer .form-header {
+  color: #0371a8;
+}
+
+.formContainer .divider {
+  border: 1px solid #ccc;
+}
+
+.formContainer .dashed-divider {
+  border-top: 1px dashed #ccc;
+}
+
+.k-animation-container .k-list-container {
+  border: 1px solid #ccc;
+}
+
+.rfBreadCrumb {
+  border-bottom: 1px dotted #ccc;
+}
+
+.rfBreadCrumb ul li {
+  color: #666;
+}
+
+.rfBreadCrumb ul li:last-child {
+  color: #000;
+}
+
+ul.tabLinks li {
+  background: #f5f5f5!important;
+  border: 1px solid #f5f5f5!important;
+  color: #666;
+}
+
+ul.tabLinks li.k-state-active {
+  border: 1px solid #ccc!important;
+  color: #333;
+  border-bottom-color: #f5f5f5!important;
+}
+
+div.k-state-active {
+  background: #f5f5f5!important;
+  border: 0!important;
+  border-top: 1px solid #ccc!important;
+}
+
+#rfTabCore {
+  background-color: #fff;
+  border: 0;
+}
+
+.rfMaximizeIcon {
+  color: #888;
+}
+
+.rfMaximizeIcon:hover {
+  color: #000;
+}
+
+.rc-tooltip {
+  font-size: 10px;
+  pointer-events: none;
+  shape-rendering: crispEdges;
+}
+
+.rc-tooltip path {
+  stroke: #888;
+  stroke-width: 1px;
+}
+
+.rc-tooltip path.rc-tooltip-dash {
+  stroke-dasharray: 1,1;
+}
+
+.rc-tooltip .rect {
+  fill: #fff;
+  opacity: .9;
+}*/
+
+.rc-tooltip text.rc-series-1 {
+  fill: #5a9bd4;
+}
+
+.rc-tooltip text.rc-series-2 {
+  fill: #7ac36a;
+}
+
+.rc-tooltip text.rc-series-3 {
+  fill: #f15a60;
+}
+
+.rc-tooltip text.rc-series-4 {
+  fill: #faa65b;
+}
+
+.rc-tooltip text.rc-series-5 {
+  fill: #9e67ab;
+}
+
+.rc-tooltip text.rf-tooltip-label {
+  font-size: 12px;
+}
+
+.rc-tooltip text.rf-tooltip-value {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/*.rc-column-chart .rc-plot-item.activate {
+  cursor: pointer;
+}*/
+
+.rc-column-chart .rc-series-1 .rc-plot-item {
+  fill: #5a9bd4;
+  stroke: none;
+}
+
+.rc-column-chart .rc-series-1 .highlight {
+  fill: #0c72cb;
+  stroke: none;
+}
+
+.rc-column-chart .rc-series-2 .rc-plot-item {
+  fill: #7ac36a;
+  stroke: none;
+}
+
+.rc-column-chart .rc-series-2 .highlight {
+  fill: #008c48;
+  stroke: none;
+}
+
+.rc-column-chart .rc-series-3 .rc-plot-item {
+  fill: #f15a60;
+  stroke: none;
+}
+
+.rc-column-chart .rc-series-3 .highlight {
+  fill: #ee2e30;
+  stroke: none;
+}
+
+.rc-column-chart .rc-series-4 .rc-plot-item {
+  fill: #faa65b;
+  stroke: none;
+}
+
+.rc-column-chart .rc-series-4 .highlight {
+  fill: #f47d23;
+  stroke: none;
+}
+
+.rc-column-chart .rc-series-5 .rc-plot-item {
+  fill: #9e67ab;
+  stroke: none;
+}
+
+.rc-column-chart .rc-series-5 .highlight {
+  fill: #662b91;
+  stroke: none;
+}
+
+.rc-column-chart .rc-series-6 .rc-plot-item {
+  fill: #d77fb4;
+  stroke: none;
+}
+
+.rc-column-chart .rc-series-6 .highlight {
+  fill: #b43794;
+  stroke: none;
+}
+
+.rc-column-chart .rc-series-7 .rc-plot-item {
+  fill: #ce7058;
+  stroke: none;
+}
+
+.rc-column-chart .rc-series-7 .highlight {
+  fill: #a21d20;
+  stroke: none;
+}
+
+.rc-column-chart .rc-series-8 .rc-plot-item {
+  fill: #737373;
+  stroke: none;
+}
+
+.rc-column-chart .rc-series-8 .highlight,.rc-column-chart .rc-series-9 .highlight,.rc-column-chart .rc-series-9 .rc-plot-item {
+  fill: #6CDEC7;
+  stroke: none;
+  opacity: 0.8;
+}
+
+/*.rc-line-chart .rc-plot-item.activate,.rc-line-chart circle.rc-plot-item {
+  cursor: pointer;
+}*/
+
+.rc-line-chart circle.rc-plot-item {
+  stroke-width: 2;
+}
+
+.rc-line-chart path.rc-plot-item {
+  stroke-width: 2;
+}
+
+.rc-line-chart .rc-series-1 .rc-plot-item {
+  stroke: #5a9bd4;
+  fill: #fff;
+}
+
+.rc-line-chart .rc-series-2 .rc-plot-item {
+  stroke: #7ac36a;
+  fill: #fff;
+}
+
+.rc-line-chart .rc-series-3 .rc-plot-item {
+  stroke: #f15a60;
+  fill: #fff;
+}
+
+.rc-line-chart .rc-series-4 .rc-plot-item {
+  stroke: #faa65b;
+  fill: #fff;
+}
+
+.rc-line-chart .rc-series-5 .rc-plot-item {
+  stroke: #9e67ab;
+  fill: #fff;
+}
+
+/*.rc-area-chart .area-path {
+  pointer-events: none;
+}
+
+.rc-area-chart .rc-plot-item {
+  opacity: .8;
+}*/
+
+.rc-area-chart .rc-series-1 .rc-plot-item {
+  fill: #5a9bd4;
+  stroke: none;
+}
+
+.rc-area-chart .rc-series-2 .rc-plot-item {
+  fill: #7ac36a;
+  stroke: none;
+}
+
+.rc-area-chart .rc-series-3 .rc-plot-item {
+  fill: #f15a60;
+  stroke: none;
+}
+
+.rc-area-chart .rc-series-4 .rc-plot-item {
+  fill: #faa65b;
+  stroke: none;
+}
+
+.rc-area-chart .rc-series-5 .rc-plot-item {
+  fill: #9e67ab;
+  stroke: none;
+}
+
+.rc-area-chart .rc-series-6 .rc-plot-item {
+  fill: #d77fb4;
+  stroke: none;
+}
+
+.rc-area-chart .rc-series-7 .rc-plot-item {
+  fill: #ce7058;
+  stroke: none;
+}
+
+.rc-area-chart .rc-series-8 .rc-plot-item {
+  fill: #737373;
+  stroke: none;
+}
+
+.rc-area-chart .rc-series-9 .rc-plot-item {
+  fill: #6CDEC7;
+  stroke: none;
+}
+
+/*.rc-bar-chart .rc-plot-item.activate {
+  cursor: pointer;
+}*/
+
+.rc-bar-chart .rc-series-1 .rc-plot-item {
+  fill: #5a9bd4;
+  stroke: none;
+}
+
+.rc-bar-chart .rc-series-2 .rc-plot-item {
+  fill: #7ac36a;
+  stroke: none;
+}
+
+.rc-bar-chart .rc-series-3 .rc-plot-item {
+  fill: #f15a60;
+  stroke: none;
+}
+
+.rc-bar-chart .rc-series-4 .rc-plot-item {
+  fill: #faa65b;
+  stroke: none;
+}
+
+.rc-bar-chart .rc-series-5 .rc-plot-item {
+  fill: #9e67ab;
+  stroke: none;
+}
+
+.rc-pie-chart .rc-plot-item-1 {
+  fill: #5a9bd4;
+  stroke: none;
+}
+
+.rc-pie-chart .rc-plot-item-2 {
+  fill: #7ac36a;
+  stroke: none;
+}
+
+.rc-pie-chart .rc-plot-item-3 {
+  fill: #f15a60;
+  stroke: none;
+}
+
+.rc-pie-chart .rc-plot-item-4 {
+  fill: #faa65b;
+  stroke: none;
+}
+
+.rc-pie-chart .rc-plot-item-5 {
+  fill: #9e67ab;
+  stroke: none;
+}
+
+.rc-pie-chart .rc-plot-item-6 {
+  fill: #d77fb4;
+  stroke: none;
+}
+
+.rc-pie-chart .rc-plot-item-7 {
+  fill: #ce7058;
+  stroke: none;
+}
+
+.rc-pie-chart .rc-plot-item-8 {
+  fill: #737373;
+  stroke: none;
+}
+
+.rc-pie-chart .rc-plot-item-9 {
+  fill: #333;
+  stroke: none;
+}
+
+.rc-pie-chart .pie-label-line {
+  stroke: #666;
+  stroke-width: 1;
+}
+
+.rc-pie-chart .pie-label-circle {
+  stroke: #666;
+  stroke-width: 1;
+  fill: #FFF;
+}
+
+.rc-pie-chart .pie-label-text {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.rc-pie-chart .pie-label-label {
+  fill: #666;
+  font-size: 10px;
+}
+
+/*.rc-gauge {
+  line-height: 1em;
+}
+
+.rc-gauge .background {
+  fill: #EEE;
+  stroke: none;
+}
+
+.rc-gauge .main {
+  fill: #67ADDA;
+  stroke: none;
+}
+
+.rc-gauge .inner-circle {
+  fill: #F9F9F9;
+  stroke: #67ADDA;
+}
+
+.rc-gauge .value-label {
+  fill: #333;
+  font-size: 24px;
+}
+
+.rc-gauge .label {
+  fill: #333;
+  font-size: 14px;
+}
+
+.rc-grid .rc-grid-line {
+  stroke: #ccc;
+  stroke-dasharray: 2,2;
+}
+
+.rc-grid .rc-grid-line-base {
+  stroke: #979797;
+  stroke-dasharray: none;
+}
+
+.rc-axis .rc-grid-line {
+  stroke: #ccc;
+}
+
+.rc-axis text {
+  fill: #666;
+  stroke: none;
+  font-size: 12px;
+}
+
+.rc-axis text.rc-axis-label {
+  font-size: 11px;
+  fill: #333;
+  stroke: none;
+}
+
+.rc-axis path {
+  visibility: hidden;
+  stroke: #ccc;
+  stroke-dasharray: 2,2;
+}
+
+.rc-column-chart text {
+  fill: #666;
+  stroke: none;
+  font-size: 12px;
+}*/

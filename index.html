@@ -1,0 +1,60 @@
+﻿<!doctype html >
+<html>
+    <head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>Herning - Beskæftigelsesområdet</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/razorflow.min.css">
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        
+<!--    OBS! google.load visualisation skal afvikles før jquery - ellers opstår der konflikter. -->
+		<!--<script type="text/javascript">
+			google.load('visualization', 
+						'1',
+						{ callback: function() {self.initialize(); },
+						//Behøver ikke at loade nedenstående packages, da google.charts ikke benyttes
+						packages: ['table', 'map', 'corechart']
+						}
+						);</script>-->
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <!-- <script type="text/javascript" src="js/razorflow.min.js"></script> -->
+        <script type="text/javascript" src="js/razorflow.js"></script>		
+        <!-- <script type="text/javascript" src="js/razorflow.devtools.min.js"></script> -->
+        <script type="text/javascript" src="js/sn.functions.js"></script>
+        <script type="text/javascript" src="js/dashboard_app.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/site.css">
+
+ </head>  
+ 
+ 
+ 
+	<body>
+        <div class="header_block_container">
+            <div>
+                <h1 class="rfHeaderContainer rfDashboardHeader rf rf-lg dbTitle header_block1 header_block1_lg">Herning: Beskæftigelsesområdet</h1>
+            </div>
+            <div>
+                <h1 class="rfDashboardHeader rf rf-lg dbTitle">
+                    <a class="rfDashboardHeader header_block2 header_block2_lg" href="https://docs.google.com/spreadsheets/d/1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw/export?gid=193382683&fitw=true&exportFormat=pdf&format=pdf&size=A4&portrait=true&sheetnames=false&printtitle=false&gridlines=false" title="Download rapport">
+                        Download rapport
+                    </a>
+                </h1>
+            </div>
+        </div>
+        <!--<div class="rfDashboardHeader rf rf-lg" style="position: relative; margin: 0px auto;">
+            <div class="rfHeaderContainer">
+                <h1 class="dbTitle">Herning: Beskæftigelsesområdet</h1>
+            </div>
+        </div>-->
+
+<!--         Don't delete this div. This is where RazorFlow will get rendered. -->
+       <div id="dbTarget" class="rf"> </div>
+        <footer>
+            <p>&copy; 2015 - Sonne & Nielsen</p>
+            <!--<a class="dbTitle" href="https://docs.google.com/spreadsheets/d/1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw/export?gid=193382683&fitw=true&exportFormat=pdf&format=pdf&size=A4&portrait=true&sheetnames=false&printtitle=false&gridlines=false" title="Download rapport">
+                <img src="img/Adobe_PDF_file_icon_32x32.png" alt="Download rapport">
+            </a>-->
+        </footer>
+    </body>
+</html>

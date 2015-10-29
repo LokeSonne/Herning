@@ -1,0 +1,42 @@
+﻿<!doctype html >
+<html>
+    <head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>Herning - Beskæftigelsesområdet</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/razorflow.min.css">
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<!--    OBS! google.load visualisation skal afvikles før jquery - ellers opstår der konflikter. -->
+		<script type="text/javascript">
+			google.load('visualization', 
+						'1',
+						{ //callback: function() {self.initialize(); },	
+						packages: ['table', 'map', 'corechart']}
+						);</script>
+<!-- 		<script type="text/javascript" src="js/google_query.js"></script> -->
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/sn.functions.js"></script>
+        <!-- <script type="text/javascript" src="js/razorflow.min.js"></script> -->
+        <script type="text/javascript" src="js/razorflow.js"></script>		
+        <!--<script type="text/javascript" src="js/razorflow.devtools.min.js"></script>-->
+        <script type="text/javascript" src="js/dashboard_app_foertidspension.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/site.css">
+
+ </head>  
+ 
+ 
+ 
+<body class="detailPage">
+    <div class="rfDashboardHeader rf rf-lg" style="position: relative; margin: 0px auto;">
+        <div class="rfHeaderContainer">
+            <h1 class="dbTitle"><a class="dbTitle home-arrow" href="/" title="Tilbage til forsiden">&#8249</a>  Førtidspension</h1>
+        </div>
+    </div>
+    <!--         Don't delete this div. This is where RazorFlow will get rendered. -->
+    <div id="dbTarget" style="position:relative;" class="rf"></div>
+    <footer>
+        <p>&copy; 2015 - Sonne & Nielsen</p>
+    </footer>
+</body>
+</html>
