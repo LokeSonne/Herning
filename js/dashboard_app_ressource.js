@@ -115,17 +115,30 @@
         myChartName: "chart1_1",
         myCaption: "Antal fuldtidspersoner"
     });
+    //addMyUniChart({
+    //    myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
+    //    mySheet: "Ressourceforløb og revalidering UDV",
+    //    myQuery: "select F,G,H,I,J,K,L,M WHERE A='Tael' OR A<=12 ORDER BY A desc",
+    //    myChartWidth: 6,
+    //    myChartHeight: 3,
+    //    isStacked: true,
+    //    myShowLegend: true,
+    //    myChartType: "column",
+    //    myChartName: "chart1_2",
+    //    myCaption: "Antal afsluttede revalideringsforløb"
+    //});
+
     addMyUniChart({
         myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
-        mySheet: "Ressourceforløb og revalidering UDV",
-        myQuery: "select F,G,H,I,J,K,L,M WHERE A='Tael' OR A<=12 ORDER BY A desc",
+        mySheet: "Afsluttede Ressourceforloeb",
+        myQuery: "select B,C WHERE A='Tael' OR A<=12 ORDER BY A desc",
         myChartWidth: 6,
         myChartHeight: 3,
         isStacked: true,
         myShowLegend: true,
         myChartType: "column",
         myChartName: "chart1_2",
-        myCaption: "Antal afsluttede revalideringsforløb"
+        myCaption: "Antal afsluttede ressourceforløb"
     });
 
     addMyUniChart({

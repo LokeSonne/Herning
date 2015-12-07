@@ -1,39 +1,4 @@
-﻿function addTooltip2(options) {
-    var kpiId = options.kpiId;
-    var dateInput = options.dateInput || "";
-    var prefix = options.prefix;
-    var kpiIdRef = String("#" + kpiId);
-    var tooltipId = "tooltip" + kpiId;
-    var tooltipIdRef = String("#" + tooltipId);
-
-    var showTooltip = function (event) {
-        //alert("hello!");
-        $(tooltipIdRef).remove();
-        $("<div id=" + tooltipId + " class=\"rfTooltip\"><span class=\"rfTooltipMainLabel\">" + prefix + dateInput.toLowerCase() + "</span></div>")
-          .appendTo('body').find(tooltipIdRef);
-        changeTooltipPosition(event);
-    };
-
-    var changeTooltipPosition = function (event) {
-        var tooltipX = event.pageX - 50;
-        var tooltipY = event.pageY - 50;
-        $('div.rfTooltip').css({ top: tooltipY, left: tooltipX });
-    };
-
-    var hideTooltip = function () {
-        $(tooltipIdRef).remove();
-    };
-
-    $(kpiIdRef).bind({
-        mousemove: changeTooltipPosition,
-        mouseenter: showTooltip,
-        mouseleave: hideTooltip
-    });
-
-};
-
-
-function addTooltip(options) {
+﻿function addTooltip(options) {
     var kpiId = options.kpiId;
     var dateInput = options.dateInput || "";
     var prefix = options.prefix;
@@ -199,6 +164,25 @@ function addMyUniChart(options) {
                     seriesColor: '#6CDEC7'
                 });
             }
+            if (myNumberOfDataColumns >= 10) {
+                myChartName.addSeries("deakljoi10", arrayHeadings[9], arrayInput["arrayInput10"], {
+                    //numberDecimalSeparator: ",",
+                    //numberThousandsSeparator: ".",
+                    seriesStacked: isStacked,
+                    seriesDisplayType: myChartType,
+                    seriesColor: '#dd542b'
+                });
+            }
+            if (myNumberOfDataColumns >= 11) {
+                myChartName.addSeries("deakljoi11", arrayHeadings[10], arrayInput["arrayInput11"], {
+                    //numberDecimalSeparator: ",",
+                    //numberThousandsSeparator: ".",
+                    seriesStacked: isStacked,
+                    seriesDisplayType: myChartType,
+                    seriesColor: '#a1968b'
+                });
+            }
+
             //Options
             if (isStacked == true) {
                 myChartName.setOption('stackedTotalDisplay', myShowTotal);
@@ -211,26 +195,6 @@ function addMyUniChart(options) {
     initialize();
 }
 
-////Kode der kan anvendes til at lave click events på elementer uden ID
-//var kpi = new KPIComponent();
-//kpi.setDimensions(3, 2);
-//kpi.setCaption('Sales in the last 24 hours');
-//kpi.setID("hello");
-//kpi.setValue(3145, {
-//    numberPrefix: "$"
-//});
-
-//db.addComponent(kpi);
-
-//$(document).on('click', 'div.rfKPICaption', function (e) {
-//    e.stopPropagation();
-//    var text = $('div.rfKPICaption').text();
-//    var text = $(e.target).text();
-//    if (text === 'Sales in the last 24 hours') {
-//        window.location.assign("forsikrede.html");
-//        return false;
-//    }
-//});
 
 function addMyKpiComponents(myKpiObjectName,myKey) {	
     var myKpiObjectName = new KPIGroupComponent();
@@ -519,32 +483,154 @@ function addMyDrillDownChartLayer(options) {
         });
     }
     initialize();
-
-    // myChartName.addDrillStep(function (done, params) {
-    // var myWhereCond = "\"" + params.label + "\""
-    // function initialize2() {
-    // // The URL of the spreadsheet to source data from.
-    // var query = new google.visualization.Query("https://docs.google.com/spreadsheets/d/1Qw80yjGuRbhzVHUUIaVwerd9BBBoI83PKcwMdbodn1U/gviz/tq?sheet=adagpenge");
-    // query.setQuery("select A, E WHERE A = " + myWhereCond);			
-    // query.send(function processResponse(response){
-    // myData = response.q	
-    // var arrayLabels = new Array();
-    // var arrayInput = new Array();
-    // for (i = 0; i < myData.Gf.length; i++) {
-    // arrayLabels.push(myData.Gf[i].c[0].v);
-    // arrayInput.push(myData.Gf[i].c[1].v);
-    // }
-    // // myChartComponentObject = myChartName;
-    // myChartName.setLabels(arrayLabels);
-    // myChartName.addSeries("rate2", "0 - 33 pct.", arrayInput, {
-    // seriesStacked: true,
-    // seriesDisplayType: "column"
-    // });
-    // // Don't forget to call unlock or the data won't be displayed
-    // done();
-    // });
-    // }				
-    // initialize2();				
-    // });
-
 }
+
+
+
+    //function addMyDrillDownChart(options) {
+    //    var myKey = options.myKey
+    //    var mySheet = options.mySheet
+    //    var mySelect = options.mySelect
+    //    var myChartName = options.myChartName
+    //    var myCaption = options.myCaption
+    //    var callback = options.callback
+
+    //    var myKeyDrill = options.myKeyDrill || options.myKey
+    //    var mySheetDrill = options.mySheetDrill || options.mySheet
+    //    var mySelectDrill = options.mySelectDrill || options.mySelect
+    //    var myChartNameDrill = options.myChartNameDrill || options.myChartName
+    //    var myCaptionDrill = options.myCaptionDrill || options.myCaption
+
+    //    var myChartName = new ChartComponent();
+    //    myChartName.setCaption(myCaption);
+    //    myChartName.setDimensions(5, 3);
+    //    myChartName.lock();
+    //    db.addComponent(myChartName);
+
+    //    //function loadApi() {
+    //    //  google.load("visualization", "1", {"callback" : initialize});
+    //    //}
+    //    function initialize() {
+    //        // The URL of the spreadsheet to source data from.
+    //        var spreadsheetUrl = String("https://docs.google.com/spreadsheets/d/" + myKey + "/gviz/tq?sheet=" + mySheet);
+    //        var query = new google.visualization.Query(spreadsheetUrl);
+    //        query.setQuery(mySelect);
+    //        query.send(function processResponse(response) {
+
+    //            if (response.isError()) {
+    //                alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage() + ' ' + response.getReasons());
+    //                return;
+    //            }
+
+    //            var myData = response.getDataTable();
+    //            var arrayLabels = new Array();
+    //            var arrayInput = new Array();
+    //            // TODO: legendText skal hente måned fra datasæt. Kræver lidt ændringer i SQL
+    //            // var legendText = myData.Gf[0].c[0].v;
+    //            var i;
+    //            for (i = 0; i < myData.getNumberOfColumns(0) ; i++) {
+    //                arrayLabels.push(myData.getColumnLabel(i, 0));
+    //                arrayInput.push(myData.getValue(0, i))
+    //            }
+    //            // myChartComponentObject = myChartName;
+    //            myChartName.setLabels(arrayLabels);
+    //            myChartName.addSeries("pb1", "Seneste måned", arrayInput, {
+    //                seriesStacked: true,
+    //                seriesDisplayType: "column"
+    //            });
+    //            myChartName.setOption('showLegendFlag', false);
+    //            // Don't forget to call unlock or the data won't be displayed
+    //            myChartName.unlock();
+    //        });
+    //    }
+    //    initialize();
+    //    //google.setOnLoadCallback(initialize);
+    //    myChartName.addDrillStep(function (done, params) {
+    //        var myWhereCond = "\"" + params.label + "\"";
+
+    //        if (params.label === "Forsikrede") {
+    //            var columnName
+    //            columnName = "B,C";
+    //        }
+    //        if (params.label === "Arbejdsmarkedsyd.") {
+    //            var columnName
+    //            columnName = "B,E";
+    //        }
+    //        if (params.label === "Kontanthjælp") {
+    //            var columnName
+    //            columnName = "F,G";
+    //        }
+    //        if (params.label === "Uddannelseshjælp") {
+    //            var columnName
+    //            columnName = "H,I";
+    //        }
+    //        if (params.label === "Sygedagpenge") {
+    //            var columnName
+    //            columnName = "J,K";
+    //        }
+    //        if (params.label === "Jobafklaring") {
+    //            var columnName
+    //            columnName = "J,M";
+    //        }
+    //        if (params.label === "Fleksjob") {
+    //            var columnName
+    //            columnName = "N,O";
+    //        }
+    //        if (params.label === "Ledighedsyd.") {
+    //            var columnName
+    //            columnName = "P,Q";
+    //        }
+    //        if (params.label === "Ressourceforløb") {
+    //            var columnName
+    //            columnName = "T,S";
+    //        }
+    //        if (params.label === "Førtidspension") {
+    //            var columnName
+    //            columnName = "T,U";
+    //        }
+    //        if (params.label === "Revalidering") {
+    //            var columnName
+    //            columnName = "V,W";
+    //        }
+
+    //        function initialize2() {
+    //            // The URL of the spreadsheet to source data from.
+    //            var query = new google.visualization.Query("https://docs.google.com/spreadsheets/d/" + myKey + "/gviz/tq?sheet=" + mySheet);
+    //            query.setQuery("select " + columnName + " ORDER BY A desc ");
+    //            query.send(function processResponse(response) {
+    //                var myData = response.getDataTable();
+    //                var arrayLabels = new Array();
+    //                var arrayInput1 = new Array();
+    //                var arrayLabels_ny = new Array();
+    //                var arrayInput1_ny = new Array();
+    //                var arrayInput2 = new Array();
+    //                var i;
+    //                for (i = 12; i <= 23; i++) {
+    //                    arrayLabels.push(myData.getValue(i, 0));
+    //                    arrayInput1.push(myData.getValue(i, 1));
+    //                }
+    //                var e;
+    //                for (e = 0; e <= 11; e++) {
+    //                    arrayInput2.push(myData.getValue(e, 1));
+    //                }
+    //                // myChartComponentObject = myChartName;
+    //                myChartName.setLabels(arrayLabels);
+    //                myChartName.setOption('showLegendFlag', true);
+
+    //                myChartName.addSeries("rate1", "seneste 12 mdr.", arrayInput1, {
+    //                    seriesStacked: false,
+    //                    seriesDisplayType: "line"
+    //                });
+    //                myChartName.addSeries("rate2", "forrige 12 mdr.", arrayInput2, {
+    //                    seriesStacked: false,
+    //                    seriesDisplayType: "line"
+    //                });
+
+    //                // Don't forget to call unlock or the data won't be displayed
+    //                done();
+    //            });
+    //        }
+    //        initialize2();
+    //    });
+
+    //}

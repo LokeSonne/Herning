@@ -205,8 +205,6 @@
 
         }
 
-        // ---------------------------------------------------------------------
-
         function addMyUniChart1(options) {
             var myChartType = options.myChartType || 'line'
             var isStacked = options.isStacked || false
@@ -331,162 +329,7 @@
             initialize();
         }
 
-        // ----------------- Dette er til ét chart -----------------------------
-
-
-        // ----------------- Dette er til ét chart -----------------------------
-        // Definerer nyt chart og kører getData, der henter data. 
-        function addMyDrillDownChart(options) {	
-            var myKey = options.myKey
-            var mySheet = options.mySheet
-            var mySelect = options.mySelect
-            var myChartName = options.myChartName
-            var myCaption = options.myCaption		
-            var callback = options.callback
-		
-            var myKeyDrill = options.myKeyDrill || options.myKey
-            var mySheetDrill = options.mySheetDrill || options.mySheet
-            var mySelectDrill = options.mySelectDrill || options.mySelect
-            var myChartNameDrill = options.myChartNameDrill || options.myChartName
-            var myCaptionDrill = options.myCaptionDrill	|| options.myCaption
-		
-            var myChartName = new ChartComponent();
-            myChartName.setCaption (myCaption);		
-            myChartName.setDimensions (5, 3);
-            myChartName.lock ();
-            db.addComponent(myChartName);
-
-            //function loadApi() {
-            //  google.load("visualization", "1", {"callback" : initialize});
-            //}
-            function initialize() {
-                // The URL of the spreadsheet to source data from.
-                var spreadsheetUrl = String("https://docs.google.com/spreadsheets/d/" + myKey + "/gviz/tq?sheet=" + mySheet);
-                var query = new google.visualization.Query(spreadsheetUrl);
-                query.setQuery(mySelect);			
-                query.send(function processResponse(response){
-					
-                    if (response.isError()) {
-                        alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage() + ' ' + response.getReasons());
-                        return;
-                    }
-					
-                    var myData = response.getDataTable();
-                    var arrayLabels = new Array();
-                    var arrayInput = new Array();
-                    // TODO: legendText skal hente måned fra datasæt. Kræver lidt ændringer i SQL
-                    // var legendText = myData.Gf[0].c[0].v;
-                    var i;
-                    for (i = 0; i < myData.getNumberOfColumns(0); i++) {
-                        arrayLabels.push(myData.getColumnLabel(i, 0));
-                        arrayInput.push(myData.getValue(0, i))
-                    }
-                    // myChartComponentObject = myChartName;
-                    myChartName.setLabels(arrayLabels);
-                    myChartName.addSeries("pb1","Seneste måned", arrayInput, {
-                        seriesStacked: true,
-                        seriesDisplayType: "column"
-                    });
-                    myChartName.setOption ('showLegendFlag', false);
-                    // Don't forget to call unlock or the data won't be displayed
-                    myChartName.unlock ();
-                });
-            }				
-            initialize();
-            //google.setOnLoadCallback(initialize);
-            myChartName.addDrillStep(function (done, params) {
-                var myWhereCond = "\"" + params.label + "\"";
-
-                if (params.label === "Forsikrede" ) {
-                    var columnName
-                    columnName = "B,C";
-                }
-                if (params.label === "Arbejdsmarkedsyd.") {
-                    var columnName
-                    columnName = "B,E";
-                }
-                if (params.label === "Kontanthjælp") {
-                    var columnName
-                    columnName = "F,G";
-                }
-                if (params.label === "Uddannelseshjælp") {
-                    var columnName
-                    columnName = "H,I";
-                }
-                if (params.label === "Sygedagpenge" ) {
-                    var columnName
-                    columnName = "J,K";
-                }
-                if (params.label === "Jobafklaring") {
-                    var columnName
-                    columnName = "J,M";
-                }
-                if (params.label === "Fleksjob" ) {
-                    var columnName
-                    columnName = "N,O";
-                }
-                if (params.label === "Ledighedsyd.") {
-                    var columnName
-                    columnName = "P,Q";
-                }
-                if (params.label === "Ressourceforløb") {
-                    var columnName
-                    columnName = "T,S";
-                }
-                if (params.label === "Førtidspension" ) {
-                    var columnName
-                    columnName = "T,U";
-                }
-                if (params.label === "Revalidering" ) {
-                    var columnName
-                    columnName = "V,W";
-                }
-
-                function initialize2() {
-                    // The URL of the spreadsheet to source data from.
-                    var query = new google.visualization.Query("https://docs.google.com/spreadsheets/d/" + myKey + "/gviz/tq?sheet=" + mySheet);
-                    query.setQuery("select "+ columnName + " ORDER BY A desc ");
-                    query.send(function processResponse(response){
-                        var myData = response.getDataTable();
-                        var arrayLabels = new Array();
-                        var arrayInput1 = new Array();
-                        var arrayLabels_ny = new Array();
-                        var arrayInput1_ny = new Array();
-                        var arrayInput2 = new Array();
-                        var i;
-                        for (i = 12; i <= 23; i++) {
-                            arrayLabels.push(myData.getValue(i, 0));
-                            arrayInput1.push(myData.getValue(i, 1));
-                        }
-                        var e;
-                        for (e = 0; e <= 11; e++) {
-                            arrayInput2.push(myData.getValue(e, 1));
-                        }					
-                        // myChartComponentObject = myChartName;
-                        myChartName.setLabels(arrayLabels);
-                        myChartName.setOption('showLegendFlag', true);
-
-                        myChartName.addSeries("rate1", "seneste 12 mdr.", arrayInput1, {
-                            seriesStacked: false,
-                            seriesDisplayType: "line"
-                        });
-                        myChartName.addSeries("rate2", "forrige 12 mdr.", arrayInput2, {
-                            seriesStacked: false,
-                            seriesDisplayType: "line"
-                        });
-
-                        // Don't forget to call unlock or the data won't be displayed
-                        done();
-                    });
-                }				
-                initialize2();				
-            });
-					
-        }
-
-        // ----------------- Dette er til ét chart -----------------------------
-        // Definerer nyt chart og kører getData, der henter data. 
-        function addMyDrillDownChart2(options) {
+        function addMyDrillDownChart1(options) {
             var myKey = options.myKey
             var mySheet = options.mySheet
             var mySelect = options.mySelect
@@ -520,7 +363,6 @@
                         alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage() + ' ' + response.getReasons());
                         return;
                     }
-
 
                     var myData = response.getDataTable();
 
@@ -562,7 +404,7 @@
                     mySeriesName11 = myData.getValue(10, 20);
 
                     var i;
-                    for (i = 1; i < myData.getNumberOfColumns(0) ; i+= 2) {
+                    for (i = 1; i < myData.getNumberOfColumns(0) ; i += 2) {
                         arrayLabels.push(myData.getColumnLabel(i, 0));
                     }
 
@@ -729,26 +571,13 @@
             });
 
         }
-        
-
-        // }
-
-        addMyDoubleKpi("Kpi2", "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw");
         // Sætter parametre for dataudtræk og kører funktioner
-
-        //addMyDrillDownChartLayer({
-        //    myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
-        //    mySheet: "adagpenge",
-        //    mySelect: "select A, E",
-        //    myChartName: "chart1_1",
-        //    myCaption: "Antal ydelsesmodtagere"
-        //    // myCallback: callback
-        //});	
+        addMyDoubleKpi("Kpi2", "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw");
 
         addMyUniChart1({
             myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
             mySheet: "Fuldtids UDV",
-            myQuery: "select B, C+E, G+I, K+M, O+Q, S+W, U, C+E+G+I+K+M+O+Q+S+U+W WHERE A='Tael' OR A<=12 ORDER BY A desc label B 'Dato', C+E 'Forsikrede og arbejdsmarkedsyd.',G+I 'Kontanthjælp og uddannelseshjælp', K+M 'Sygedagpenge og jobafklaring', O+Q 'Fleksjob og ledighedsyd.', S+W 'Ressourceforløb og revalidering', U 'Førtidspension', C+E+G+I+K+M+O+Q+S+U+W 'Total'",
+            myQuery: "select B, C+D, E+F, G+H, I+J, K+M, L, C+D+E+F+G+H+I+J+K+M+L WHERE A='Tael' OR A<=12 ORDER BY A desc label B 'Dato', C+D 'Forsikrede og arbejdsmarkedsyd.',E+F 'Kontanthjælp og uddannelseshjælp', G+H 'Sygedagpenge og jobafklaring', I+J 'Fleksjob og ledighedsyd.', K+M 'Ressourceforløb og revalidering', L 'Førtidspension', C+D+E+F+G+H+I+J+K+M+L 'Total'",
             myChartWidth: 7,
             myChartHeight: 6,
             isStacked: true,
@@ -759,7 +588,7 @@
         });
 
 
-        addMyDrillDownChart2({
+        addMyDrillDownChart1({
             myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
             mySheet: "TILGANG",
             mySheetDrill: "UDV TILGANG",
@@ -768,7 +597,7 @@
             myCaption: "Antal påbegyndte forløb"
         });
 
-        addMyDrillDownChart2({
+        addMyDrillDownChart1({
             myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
             mySheet: "AFGANG",
             mySheetDrill: "UDV AFGANG",
@@ -909,6 +738,189 @@
             initialize();
         }
 
+        function addMyDrillDownChart2(options) {
+            var myKey = options.myKey
+            var mySheet = options.mySheet
+            var mySelect = options.mySelect
+            var myChartName = options.myChartName
+            var myCaption = options.myCaption
+            var callback = options.callback
+
+            var myKeyDrill = options.myKeyDrill || options.myKey
+            var mySheetDrill = options.mySheetDrill || options.mySheet
+            var mySelectDrill = options.mySelectDrill || options.mySelect
+            var myChartNameDrill = options.myChartNameDrill || options.myChartName
+            var myCaptionDrill = options.myCaptionDrill || options.myCaption
+
+            var myChartName = new ChartComponent();
+            myChartName.setCaption(myCaption);
+            myChartName.setDimensions(6, 4);
+            myChartName.lock();
+            db2.addComponent(myChartName);
+
+            //function loadApi() {
+            //  google.load("visualization", "1", {"callback" : initialize});
+            //}
+            function initialize() {
+                // The URL of the spreadsheet to source data from.
+                var spreadsheetUrl = String("https://docs.google.com/spreadsheets/d/" + myKey + "/gviz/tq?sheet=" + mySheet);
+                var query = new google.visualization.Query(spreadsheetUrl);
+                query.setQuery(mySelect);
+                query.send(function processResponse(response) {
+
+                    if (response.isError()) {
+                        alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage() + ' ' + response.getReasons());
+                        return;
+                    }
+
+                    var myData = response.getDataTable();
+
+                    var mySeriesName1 = new String();
+                    var mySeriesName2 = new String();
+                    var mySeriesName3 = new String();
+                    var mySeriesName4 = new String();
+                    var mySeriesName5 = new String();
+                    var mySeriesName6 = new String();
+
+                    var arrayLabels = new Array();
+                    var arrayInput1 = new Array();
+                    var arrayInput2 = new Array();
+                    var arrayInput3 = new Array();
+                    var arrayInput4 = new Array();
+                    var arrayInput5 = new Array();
+                    var arrayInput6 = new Array();
+
+                    mySeriesName1 = myData.getValue(0, 0);
+                    mySeriesName2 = myData.getValue(1, 2);
+                    mySeriesName3 = myData.getValue(2, 4);
+                    mySeriesName4 = myData.getValue(3, 6);
+                    mySeriesName5 = myData.getValue(4, 8);
+                    mySeriesName6 = myData.getValue(5, 10);
+
+                    var i;
+                    for (i = 1; i < myData.getNumberOfColumns(0) ; i += 2) {
+                        arrayLabels.push(myData.getColumnLabel(i, 0));
+                    }
+
+                    var e;
+                    for (e = 0; e < myData.getNumberOfRows(0) ; e++) {
+                        arrayInput1.push(myData.getValue(e, 1));
+                        arrayInput2.push(myData.getValue(e, 3));
+                        arrayInput3.push(myData.getValue(e, 5));
+                        arrayInput4.push(myData.getValue(e, 7));
+                        arrayInput5.push(myData.getValue(e, 9));
+                        arrayInput6.push(myData.getValue(e, 11));
+                    }
+
+                    // myChartComponentObject = myChartName;
+                    myChartName.setLabels(arrayLabels);
+                    myChartName.addSeries("pb1", mySeriesName1, arrayInput1, {
+                        seriesStacked: true,
+                        seriesDisplayType: "column",
+                        seriesColor: '#5a9bd4'
+                    });
+                    myChartName.addSeries("pb2", mySeriesName2, arrayInput2, {
+                        seriesStacked: true,
+                        seriesDisplayType: "column",
+                        seriesColor: '#5a9bd4'
+                    });
+                    myChartName.addSeries("pb3", mySeriesName3, arrayInput3, {
+                        seriesStacked: true,
+                        seriesDisplayType: "column",
+                        seriesColor: '#5a9bd4'
+                    });
+                    myChartName.addSeries("pb4", mySeriesName4, arrayInput4, {
+                        seriesStacked: true,
+                        seriesDisplayType: "column",
+                        seriesColor: '#5a9bd4'
+                    });
+                    myChartName.addSeries("pb5", mySeriesName5, arrayInput5, {
+                        seriesStacked: true,
+                        seriesDisplayType: "column",
+                        seriesColor: '#5a9bd4'
+                    });
+                    myChartName.addSeries("pb6", mySeriesName6, arrayInput6, {
+                        seriesStacked: true,
+                        seriesDisplayType: "column",
+                        seriesColor: '#5a9bd4'
+                    });
+                    myChartName.setOption('showLegendFlag', false);
+                    // Don't forget to call unlock or the data won't be displayed
+                    myChartName.unlock();
+                });
+            }
+            initialize();
+            //google.setOnLoadCallback(initialize);
+            myChartName.addDrillStep(function (done, params) {
+                var myWhereCond = "\"" + params.label + "\"";
+
+                if (params.label === "Tilgang - forsikrede") {
+                    var columnName
+                    columnName = "B,C";
+                }
+                if (params.label === "Afgang - forsikrede") {
+                    var columnName
+                    columnName = "D,E";
+                }
+                if (params.label === "Tilgang - udd.hjælp - udd.parate") {
+                    var columnName
+                    columnName = "F,G";
+                }
+                if (params.label === "Afgang - udd.hjælp -udd.parate") {
+                    var columnName
+                    columnName = "H,I";
+                }
+                if (params.label === "Tilgang - udd.hjælp - aktivitetsparate") {
+                    var columnName
+                    columnName = "J,K";
+                }
+                if (params.label === "Afgang - udd.hjælp - aktivitetsparate") {
+                    var columnName
+                    columnName = "L,M";
+                }
+
+                function initialize2() {
+                    // The URL of the spreadsheet to source data from.
+                    var query = new google.visualization.Query("https://docs.google.com/spreadsheets/d/" + myKey + "/gviz/tq?sheet=" + mySheetDrill);
+                    query.setQuery("select " + columnName + " ORDER BY A desc ");
+                    query.send(function processResponse(response) {
+                        var myData = response.getDataTable();
+                        var arrayLabels = new Array();
+                        var arrayInput1 = new Array();
+                        var arrayLabels_ny = new Array();
+                        var arrayInput1_ny = new Array();
+                        var arrayInput2 = new Array();
+                        var i;
+                        for (i = 12; i <= 23; i++) {
+                            arrayLabels.push(myData.getValue(i, 0));
+                            arrayInput1.push(myData.getValue(i, 1));
+                        }
+                        var e;
+                        for (e = 0; e <= 11; e++) {
+                            arrayInput2.push(myData.getValue(e, 1));
+                        }
+                        // myChartComponentObject = myChartName;
+                        myChartName.setLabels(arrayLabels);
+                        myChartName.setOption('showLegendFlag', true);
+
+                        myChartName.addSeries("rate1", "seneste 12 mdr.", arrayInput1, {
+                            seriesStacked: false,
+                            seriesDisplayType: "line"
+                        });
+                        myChartName.addSeries("rate2", "forrige 12 mdr.", arrayInput2, {
+                            seriesStacked: false,
+                            seriesDisplayType: "line"
+                        });
+
+                        // Don't forget to call unlock or the data won't be displayed
+                        done();
+                    });
+                }
+                initialize2();
+            });
+
+        }
+
 
         // addMyUniChart er en function, der viser et chart. Den er paremtriseret, så den kan anvendes til de fleste charts
         // - dog ikke med drillstep eller pie-charts. For at fungere skal den query, der henter data fra Spreadsheet have 
@@ -1001,19 +1013,22 @@
                     if (myNumberOfDataColumns >= 6) {
                         myChartName.addSeries("deakljoi6", arrayHeadings[5], arrayInput["arrayInput6"], {
                             seriesStacked: isStacked,
-                            seriesDisplayType: myChartType
+                            seriesDisplayType: myChartType,
+                            seriesColor: "#d77fb4"
                         });
                     }
                     if (myNumberOfDataColumns >= 7) {
                         myChartName.addSeries("deakljoi7", arrayHeadings[6], arrayInput["arrayInput7"], {
                             seriesStacked: isStacked,
-                            seriesDisplayType: myChartType
+                            seriesDisplayType: myChartType,
+                            seriesColor: "#ce7058"
                         });
                     }
                     if (myNumberOfDataColumns >= 8) {
                         myChartName.addSeries("deakljoi8", arrayHeadings[7], arrayInput["arrayInput8"], {
                             seriesStacked: isStacked,
-                            seriesDisplayType: myChartType
+                            seriesDisplayType: myChartType,
+                            seriesColor: "#c7c8ca"
                         });
                     }
                     if (myNumberOfDataColumns >= 9) {
@@ -1030,7 +1045,7 @@
             initialize();
         }
 
-        //// ---------------------------------------------------------------------
+        ////// ---------------------------------------------------------------------
 
         addMyKpi2("Kpi2", "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw");
 
@@ -1046,7 +1061,6 @@
             myChartName: "chart2_1",
             myCaption: "Andel af arbejdsstyrken"
         });
-
         addMyUniChart2({
             myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
             mySheet: "Unge UDV",
@@ -1059,12 +1073,11 @@
             myChartName: "chart2_3",
             myCaption: "Udvikling i årsmål"
         });
-
         addMyUniChart2({
             myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
             mySheet: "Unge UDV",
-            myQuery: "select E,G,H,F,J WHERE A='Tael' OR A<=12 ORDER BY A desc",
-            myChartWidth: 12,
+            myQuery: "select E,F,J,AF,AG,AH,AI,AJ,AK,AL WHERE A='Tael' OR A<=12 ORDER BY A desc",
+            myChartWidth: 6,
             myChartHeight: 4,
             isStacked: true,
             myShowLegend: true,
@@ -1072,6 +1085,16 @@
             myChartName: "chart2_2",
             myCaption: "Fuldtidspersoner"
         });
+
+        addMyDrillDownChart2({
+            myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
+            mySheet: "TA UNGE",
+            mySheetDrill: "TA UNGE UDV",
+            mySelect: "select B,C, D,E, F,G, H,I, J,K, L,M WHERE A=0 label B 'Dato', C 'Tilgang - forsikrede', D 'Dato', E 'Afgang - forsikrede', F 'Dato', G 'Tilgang - udd.hjælp - udd.parate', H 'Dato', I 'Afgang - udd.hjælp -udd.parate', J 'Dato', K 'Tilgang - udd.hjælp - aktivitetsparate', L 'Date', M 'Afgang - udd.hjælp - aktivitetsparate'",
+            myChartName: "chart2_4",
+            myCaption: "Antal påbegyndte og afsluttede forløb"
+        });
+
         // -----------------------------------------------------------------------------------------------------------
         // -----------------------Dashboard 3-------------------------------------------------------------------------
         // -----------------------------------------------------------------------------------------------------------
@@ -1181,7 +1204,7 @@
                         var arrayElement = "arrayInput" + x;
                         arrayInput[arrayElement] = [];
                         for (var e = 0; e < myNumberOfRows ; e++) {
-                            arrayInput[arrayElement].push(myData.getValue(e, x));
+                            arrayInput[arrayElement].push(myData.getValue(e, x).toFixed(1));
                         }
                     }
 
@@ -1259,7 +1282,7 @@
             initialize();
         }
 
-        // ---------------------------------------------------------------------
+        //// ---------------------------------------------------------------------
 
         addMyKpi3("Kpi3", "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw");
 
@@ -1285,7 +1308,7 @@
             myShowLegend: true,
             myChartType: "line",
             myChartName: "chart3_2",
-            myCaption: "Andel"
+            myCaption: "Andel af sygedagpengeforløb"
         });
 
         // -----------------------------------------------------------------------------------------------------------
@@ -1531,7 +1554,7 @@
             initialize();
         }
 
-        // ---------------------------------------------------------------------
+        //// ---------------------------------------------------------------------
 
         addMyKpi4("Kpi4", "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw");
 
@@ -1585,6 +1608,7 @@
             myChartName: "chart4_4",
             myCaption: "Antal arbejdspladser fordelt på brancher"
         });
+
         tdb.addDashboardTab(db, {
             title: "Oversigt",
             active: true
@@ -1601,7 +1625,4 @@
 	    
         });
 
-        //$(".header_block_container").mouseenter(function () {
-        //    alert("hello world!");
-        //});
     }, { tabbed: true });

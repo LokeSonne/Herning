@@ -104,20 +104,20 @@
 	addMyUniChart({
 	    myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
 	    mySheet: "Sygedagpenge og jobafklaring UDV",
-	    myQuery: "select B, C, D, E, F, G, H, I, J, K WHERE A='Tael' OR A<=12 ORDER BY A desc",
+	    myQuery: "select B, C, D, E, F, G, H, I, J, K,L,M WHERE A='Tael' OR A<=12 ORDER BY A desc",
 	    myChartWidth: 6,
 	    myChartHeight: 4,
 	    isStacked: true,
 	    myShowLegend: true,
 	    myChartType: "area",
 	    myChartName: "chart1_1",
-	    myCaption: "Antal sygedagpengeforløb"
+	    myCaption: "Antal sygedagpengeforløb fordelt på varighed"
 	});
 
 	addMyUniChart({
 	    myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
 	    mySheet: "Sygedagpenge og jobafklaring UDV",
-	    myQuery: "select L,M WHERE A='Tael' OR A<=12 ORDER BY A desc",
+	    myQuery: "select N,O WHERE A='Tael' OR A<=12 ORDER BY A desc",
 	    myChartWidth: 6,
 	    myChartHeight: 4,
 	    isStacked: false,
@@ -130,7 +130,7 @@
 	addMyUniChart({
 	    myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
 	    mySheet: "Sygedagpenge og jobafklaring UDV",
-	    myQuery: "select N,O,P WHERE A='Tael' OR A<=12 ORDER BY A desc",
+	    myQuery: "select P,Q,R WHERE A='Tael' OR A<=12 ORDER BY A desc",
 	    myChartWidth: 6,
 	    myChartHeight: 3,
 	    isStacked: false,
@@ -144,7 +144,7 @@
 	addMyUniChart({
 	    myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
 	    mySheet: "Sygedagpenge og jobafklaring UDV",
-	    myQuery: "select Q,R,S WHERE A='Tael' OR A<=12 ORDER BY A desc",
+	    myQuery: "select S,T,U WHERE A='Tael' OR A<=12 ORDER BY A desc",
 	    myChartWidth: 6,
 	    myChartHeight: 3,
 	    isStacked: false,

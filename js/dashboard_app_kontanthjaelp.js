@@ -93,7 +93,7 @@
 	addMyUniChart({
 	    myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
         mySheet: "Kontanthjaelp og uddannelseshjaelp UDV",
-	    myQuery: "select B,C,E,G WHERE A='Tael' OR A<=12 ORDER BY A desc",
+	    myQuery: "select B,C,E,G,I,K,M WHERE A='Tael' OR A<=12 ORDER BY A desc",
 	    myChartWidth: 6,
 	    myChartHeight: 4,
 	    isStacked: true,
@@ -114,7 +114,7 @@
 	    myShowLegend: true,
 	    myChartType: "column",
 	    myChartName: "chart1_2",
-	    myCaption: "Antal afsluttede forløb"
+	    myCaption: "Antal afsluttede forløb fordelt på varighed"
 	});
 
 
