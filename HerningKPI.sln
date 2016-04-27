@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "HerningKPI(1)", "http://localhost:12108", "{60AE4985-9AEA-44E4-9448-60191DA84D65}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Herning", "http://localhost:12108", "{60AE4985-9AEA-44E4-9448-60191DA84D65}"
 	ProjectSection(WebsiteProperties) = preProject
 		SccProjectName = "SAK"
 		SccAuxPath = "SAK"
@@ -12,20 +12,20 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "HerningKPI(1)", "http://loc
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_12108"
-		Debug.AspNetCompiler.PhysicalPath = "..\HerningKPI\"
+		Debug.AspNetCompiler.PhysicalPath = "..\Herning\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_12108\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/localhost_12108"
-		Release.AspNetCompiler.PhysicalPath = "..\HerningKPI\"
+		Release.AspNetCompiler.PhysicalPath = "..\Herning\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_12108\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "..\HerningKPI\"
+		SlnRelativePath = "..\Herning\"
 	EndProjectSection
 EndProject
 Global
