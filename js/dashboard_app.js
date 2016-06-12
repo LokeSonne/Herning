@@ -1483,7 +1483,7 @@
             myShowLegend: true,
             myChartType: "line",
             myChartName: "chart3_2",
-            myCaption: "Andel af sygedagpengeforløb"
+            myCaption: "Andel sygedagpengeforløb med mindst 22 ugers varighed"
         });
 
         // -----------------------------------------------------------------------------------------------------------
