@@ -1491,7 +1491,7 @@
         // -----------------------------------------------------------------------------------------------------------
         var db4 = new Dashboard();
         db4.setDashboardTitle("Politisk mål: Balancen på arbejdsmarkedet");
-
+       
         function addMyKpi4(myKpiObjectName, myKey) {
             var myKpiObjectName = new KPIGroupComponent();
             var myKpiObjectName = new KPIGroupComponent();
@@ -1536,6 +1536,13 @@
                         //numberDecimalPoints: 1,
                         //numberSuffix: " pct."
                     });
+                    
+                    myKpiObjectName.addKPI("KpiYd6_4", {
+                        caption: String(myData.getValue(5, 0)),
+                        value: Number(myData.getValue(5, 2)),
+                        //numberDecimalPoints: 1,
+                        //numberSuffix: " pct."
+                    });
 
                     // Don't forget to call unlock or the data won't be displayed
                     myKpiObjectName.unlock();
@@ -1560,11 +1567,16 @@
                     });
                     addTooltip({
                         kpiId: "KpiYd4_4",
+                        dateInput: String(myData.getValue(2, 1)),
+                        prefix: "Antal "
+                    });
+                    addTooltip({
+                        kpiId: "KpiYd5_4",
                         dateInput: String(myData.getValue(3, 1)),
                         prefix: "Antal fra Jobnet "
                     });
                     addTooltip({
-                        kpiId: "KpiYd5_4",
+                        kpiId: "KpiYd6_4",
                         dateInput: String(myData.getValue(4, 1)),
                         prefix: "Antal fra Jobnet"
                     });
