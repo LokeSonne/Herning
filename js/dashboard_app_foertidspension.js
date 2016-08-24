@@ -35,13 +35,13 @@
                 myKpiObjectName.addKPI("KpiYd4", {
                     caption: String(myData.getValue(3, 0)),
                     value: Number(myData.getValue(3, 2)),
-                    numberDecimalPoints: 2,
+                    numberDecimalPoints: 3,
                     numberSuffix: " pct."
                 });
                 myKpiObjectName.addKPI("KpiYd5", {
                     caption: String(myData.getValue(4, 0)),
                     value: Number(myData.getValue(4, 2)),
-                    numberDecimalPoints: 2,
+                    numberDecimalPoints: 3,
                     numberSuffix: " pct."
                 });
 
@@ -125,6 +125,6 @@
         myChartType: "line",
         myChartName: "chart1_3",
         myCaption: "Andel af befolkningen",
-        myNumberDecimalPoints: 2
+        myNumberDecimalPoints: 3
     });
 });
