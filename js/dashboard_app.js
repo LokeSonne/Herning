@@ -21,16 +21,14 @@
         db.setDashboardTitle("Table In Razorfow");
 
         function addMyDoubleKpi(myKpiObjectName, myKey) {
-            var myKpiObjectName = new KPIGroupComponent();
-            var myKpiObjectName = new KPIGroupComponent();
-            var myKey = String(myKey);
+            myKpiObjectName = new KPIGroupComponent();
+            myKey = String(myKey);
             myKpiObjectName.setDimensions(12, 2);
             myKpiObjectName.lock();
             db.addComponent(myKpiObjectName);
 
             var myKpiObjectName2 = myKpiObjectName + "2";
-            var myKpiObjectName2 = new KPIGroupComponent();
-            var myKey = String(myKey);
+            myKpiObjectName2 = new KPIGroupComponent();
             myKpiObjectName2.setDimensions(12, 2);
             myKpiObjectName2.lock();
             db.addComponent(myKpiObjectName2);
@@ -46,32 +44,32 @@
 
                     myKpiObjectName.addKPI("KpiYd1", {
                         caption: String(myData.getValue(0, 0)),
-                        value: Number(myData.getValue(0, 2)),
+                        value: Number(myData.getValue(0, 2))
                         //numberPrefix: dateInput1.toLowerCase()
                     });
                     myKpiObjectName.addKPI("KpiYd2", {
                         caption: String(myData.getValue(1, 0)),
-                        value: Number(myData.getValue(1, 2)),
+                        value: Number(myData.getValue(1, 2))
                         // numberSuffix: " pct."
                     });
                     myKpiObjectName.addKPI("KpiYd3", {
                         caption: String(myData.getValue(2, 0)),
-                        value: Number(myData.getValue(2, 2)),
+                        value: Number(myData.getValue(2, 2))
                         // numberSuffix: " pct."
                     });
                     myKpiObjectName.addKPI("KpiYd4", {
                         caption: String(myData.getValue(3, 0)),
-                        value: Number(myData.getValue(3, 2)),
+                        value: Number(myData.getValue(3, 2))
                         // numberSuffix: " pct."
                     });
                     myKpiObjectName2.addKPI("KpiYd5", {
                         caption: String(myData.getValue(4, 0)),
-                        value: Number(myData.getValue(4, 2)),
+                        value: Number(myData.getValue(4, 2))
                         // numberSuffix: " pct."
                     });
                     myKpiObjectName2.addKPI("KpiYd6", {
                         caption: String(myData.getValue(5, 0)),
-                        value: Number(myData.getValue(5, 2)),
+                        value: Number(myData.getValue(5, 2))
                         // numberSuffix: " pct."
                     });
                     myKpiObjectName2.addKPI("KpiYd7", {
@@ -198,7 +196,7 @@
 
                 });
 
-            };
+            }
 
 
             initialize();
@@ -206,18 +204,18 @@
         }
 
         function addMyUniChart1(options) {
-            var myChartType = options.myChartType || 'line'
-            var isStacked = options.isStacked || false
-            var myChartHeight = options.myChartHeight || 4
-            var myChartWidth = options.myChartWidth || 4
-            var myKey = options.myKey
-            var mySheet = options.mySheet
-            var myQuery = options.myQuery
-            var myChartName = options.myChartName
-            var myCaption = options.myCaption
-            var myShowLegend = options.myShowLegend || true
+            var myChartType = options.myChartType || 'line';
+            var isStacked = options.isStacked || false;
+            var myChartHeight = options.myChartHeight || 4;
+            var myChartWidth = options.myChartWidth || 4;
+            var myKey = options.myKey;
+            var mySheet = options.mySheet;
+            var myQuery = options.myQuery;
+            var myChartName = options.myChartName;
+            var myCaption = options.myCaption;
+            var myShowLegend = options.myShowLegend || true;
 
-            var myChartName = new ChartComponent();
+            myChartName = new ChartComponent();
             myChartName.setCaption(myCaption);
             myChartName.setDimensions(myChartWidth, myChartHeight);
             myChartName.setOption('showLegendFlag', myShowLegend);
@@ -242,32 +240,32 @@
                     for (var x = 1; x <= myNumberOfDataColumns; x++) {
                         var arrayElement = "arrayInput" + x;
                         arrayInput[arrayElement] = [];
-                        for (var e = 0; e < myNumberOfRows ; e++) {
+                        for (var e = 0; e < myNumberOfRows; e++) {
                             arrayInput[arrayElement].push(myData.getValue(e, x));
                         }
                     }
 
-                    for (var i = 0; i < myNumberOfRows ; i++) {
+                    for (var i = 0; i < myNumberOfRows; i++) {
                         arrayLabels.push(myData.getValue(i, 0));
-                    };
+                    }
 
-                    for (var h = 1; h <= myNumberOfDataColumns ; h++) {
+                    for (var h = 1; h <= myNumberOfDataColumns; h++) {
                         arrayHeadings.push(myData.getColumnLabel(h));
-                    };
+                    }
 
                     myChartName.setLabels(arrayLabels);
 
 
                     myChartName.addSeries("deakljoi1", arrayHeadings[0], arrayInput["arrayInput1"], {
                         seriesStacked: isStacked,
-                        seriesDisplayType: myChartType,
+                        seriesDisplayType: myChartType
                         //seriesColor: "#5a9bd4"
                     });
 
                     if (myNumberOfDataColumns >= 2) {
                         myChartName.addSeries("deakljoi2", arrayHeadings[1], arrayInput["arrayInput2"], {
                             seriesStacked: isStacked,
-                            seriesDisplayType: myChartType,
+                            seriesDisplayType: myChartType
                             //seriesColor: "#7ac36a"
                         });
                     }
@@ -275,7 +273,7 @@
                     if (myNumberOfDataColumns >= 3) {
                         myChartName.addSeries("deakljoi3", arrayHeadings[2], arrayInput["arrayInput3"], {
                             seriesStacked: isStacked,
-                            seriesDisplayType: myChartType,
+                            seriesDisplayType: myChartType
                             //seriesColor: "#f15a60"
                         });
                     }
@@ -283,14 +281,14 @@
                     if (myNumberOfDataColumns >= 4) {
                         myChartName.addSeries("deakljoi4", arrayHeadings[3], arrayInput["arrayInput4"], {
                             seriesStacked: isStacked,
-                            seriesDisplayType: myChartType,
+                            seriesDisplayType: myChartType
                             //seriesColor: "#faa65b"
                         });
                     }
                     if (myNumberOfDataColumns >= 5) {
                         myChartName.addSeries("deakljoi5", arrayHeadings[4], arrayInput["arrayInput5"], {
                             seriesStacked: isStacked,
-                            seriesDisplayType: myChartType,
+                            seriesDisplayType: myChartType
                             //seriesColor: "#9e67ab"
                         });
                     }
@@ -330,20 +328,20 @@
         }
 
         function addMyDrillDownChart1(options) {
-            var myKey = options.myKey
-            var mySheet = options.mySheet
-            var mySelect = options.mySelect
-            var myChartName = options.myChartName
-            var myCaption = options.myCaption
-            var callback = options.callback
+            var myKey = options.myKey;
+            var mySheet = options.mySheet;
+            var mySelect = options.mySelect;
+            var myChartName = options.myChartName;
+            var myCaption = options.myCaption;
+            var callback = options.callback;
 
-            var myKeyDrill = options.myKeyDrill || options.myKey
-            var mySheetDrill = options.mySheetDrill || options.mySheet
-            var mySelectDrill = options.mySelectDrill || options.mySelect
-            var myChartNameDrill = options.myChartNameDrill || options.myChartName
-            var myCaptionDrill = options.myCaptionDrill || options.myCaption
+            var myKeyDrill = options.myKeyDrill || options.myKey;
+            var mySheetDrill = options.mySheetDrill || options.mySheet;
+            var mySelectDrill = options.mySelectDrill || options.mySelect;
+            var myChartNameDrill = options.myChartNameDrill || options.myChartName;
+            var myCaptionDrill = options.myCaptionDrill || options.myCaption;
 
-            var myChartName = new ChartComponent();
+            myChartName = new ChartComponent();
             myChartName.setCaption(myCaption);
             myChartName.setDimensions(5, 3);
             myChartName.lock();
@@ -403,13 +401,11 @@
                     mySeriesName10 = myData.getValue(9, 18);
                     mySeriesName11 = myData.getValue(10, 20);
 
-                    var i;
-                    for (i = 1; i < myData.getNumberOfColumns(0) ; i += 2) {
+                    for (var i = 1; i < myData.getNumberOfColumns(0); i += 2) {
                         arrayLabels.push(myData.getColumnLabel(i, 0));
                     }
 
-                    var e;
-                    for (e = 0; e < myData.getNumberOfRows(0) ; e++) {
+                    for (var e = 0; e < myData.getNumberOfRows(0); e++) {
                         arrayInput1.push(myData.getValue(e, 1));
                         arrayInput2.push(myData.getValue(e, 3));
                         arrayInput3.push(myData.getValue(e, 5));
@@ -484,49 +480,38 @@
             //google.setOnLoadCallback(initialize);
             myChartName.addDrillStep(function (done, params) {
                 var myWhereCond = "\"" + params.label + "\"";
-
+                var columnNam = "";
                 if (params.label === "Forsikrede") {
-                    var columnName
                     columnName = "B,C";
                 }
                 if (params.label === "Arbejdsmarkedsyd.") {
-                    var columnName
                     columnName = "B,E";
                 }
                 if (params.label === "Kontanthjælp") {
-                    var columnName
                     columnName = "F,G";
                 }
                 if (params.label === "Uddannelseshjælp") {
-                    var columnName
                     columnName = "H,I";
                 }
                 if (params.label === "Sygedagpenge") {
-                    var columnName
                     columnName = "J,K";
                 }
                 if (params.label === "Jobafklaring") {
-                    var columnName
                     columnName = "J,M";
                 }
                 if (params.label === "Fleksjob") {
-                    var columnName
                     columnName = "N,O";
                 }
                 if (params.label === "Ledighedsyd.") {
-                    var columnName
                     columnName = "P,Q";
                 }
                 if (params.label === "Ressourceforløb") {
-                    var columnName
                     columnName = "T,S";
                 }
                 if (params.label === "Førtidspension") {
-                    var columnName
                     columnName = "T,U";
                 }
                 if (params.label === "Revalidering") {
-                    var columnName
                     columnName = "V,W";
                 }
 
@@ -541,13 +526,12 @@
                         var arrayLabels_ny = new Array();
                         var arrayInput1_ny = new Array();
                         var arrayInput2 = new Array();
-                        var i;
-                        for (i = 12; i <= 23; i++) {
+
+                        for (var i = 12; i <= 23; i++) {
                             arrayLabels.push(myData.getValue(i, 0));
                             arrayInput1.push(myData.getValue(i, 1));
                         }
-                        var e;
-                        for (e = 0; e <= 11; e++) {
+                        for (var e = 0; e <= 11; e++) {
                             arrayInput2.push(myData.getValue(e, 1));
                         }
                         // myChartComponentObject = myChartName;
@@ -615,9 +599,8 @@
         db2.setDashboardTitle("Politisk mål: Unge under 25 år");
 
         function addMyKpi2(myKpiObjectName, myKey) {
-            var myKpiObjectName = new KPIGroupComponent();
-            var myKpiObjectName = new KPIGroupComponent();
-            var myKey = String(myKey);
+            myKpiObjectName = new KPIGroupComponent();
+            myKey = String(myKey);
             myKpiObjectName.setDimensions(12, 2);
             myKpiObjectName.lock();
             db2.addComponent(myKpiObjectName);
@@ -646,17 +629,17 @@
                     numberInput2 = Number(myData.getValue(1, 2));
                     numberInput3 = Number(myData.getValue(2, 2));
 
-                    captionInput1 = String(myData.getValue(0, 0))
-                    captionInput2 = String(myData.getValue(1, 0))
-                    captionInput3 = String(myData.getValue(2, 0))
+                    captionInput1 = String(myData.getValue(0, 0));
+                    captionInput2 = String(myData.getValue(1, 0));
+                    captionInput3 = String(myData.getValue(2, 0));
 
-                    dateInput1 = String(myData.getValue(0, 1))
-                    dateInput2 = String(myData.getValue(1, 1))
-                    dateInput3 = String(myData.getValue(2, 1))
+                    dateInput1 = String(myData.getValue(0, 1));
+                    dateInput2 = String(myData.getValue(1, 1));
+                    dateInput3 = String(myData.getValue(2, 1));
 
                     myKpiObjectName.addKPI("KpiYd1_2", {
                         caption: captionInput1,
-                        value: numberInput1.toFixed(1),
+                        value: numberInput1.toFixed(1)
                         //numberDecimalPoints: 2,
                         //numberSuffix: " pct."
                     });
@@ -697,26 +680,26 @@
 
                 });
 
-            };
+            }
 
             initialize();
         }
 
         function addMyDrillDownChart2(options) {
-            var myKey = options.myKey
-            var mySheet = options.mySheet
-            var mySelect = options.mySelect
-            var myChartName = options.myChartName
-            var myCaption = options.myCaption
-            var callback = options.callback
+            var myKey = options.myKey;
+            var mySheet = options.mySheet;
+            var mySelect = options.mySelect;
+            var myChartName = options.myChartName;
+            var myCaption = options.myCaption;
+            var callback = options.callback;
 
-            var myKeyDrill = options.myKeyDrill || options.myKey
-            var mySheetDrill = options.mySheetDrill || options.mySheet
-            var mySelectDrill = options.mySelectDrill || options.mySelect
-            var myChartNameDrill = options.myChartNameDrill || options.myChartName
-            var myCaptionDrill = options.myCaptionDrill || options.myCaption
+            var myKeyDrill = options.myKeyDrill || options.myKey;
+            var mySheetDrill = options.mySheetDrill || options.mySheet;
+            var mySelectDrill = options.mySelectDrill || options.mySelect;
+            var myChartNameDrill = options.myChartNameDrill || options.myChartName;
+            var myCaptionDrill = options.myCaptionDrill || options.myCaption;
 
-            var myChartName = new ChartComponent();
+            myChartName = new ChartComponent();
             myChartName.setCaption(myCaption);
             myChartName.setDimensions(6, 4);
             myChartName.lock();
@@ -761,13 +744,11 @@
                     mySeriesName5 = myData.getValue(4, 8);
                     mySeriesName6 = myData.getValue(5, 10);
 
-                    var i;
-                    for (i = 1; i < myData.getNumberOfColumns(0) ; i += 2) {
+                    for (var i = 1; i < myData.getNumberOfColumns(0); i += 2) {
                         arrayLabels.push(myData.getColumnLabel(i, 0));
                     }
 
-                    var e;
-                    for (e = 0; e < myData.getNumberOfRows(0) ; e++) {
+                    for (var e = 0; e < myData.getNumberOfRows(0); e++) {
                         arrayInput1.push(myData.getValue(e, 1));
                         arrayInput2.push(myData.getValue(e, 3));
                         arrayInput3.push(myData.getValue(e, 5));
@@ -817,29 +798,23 @@
             //google.setOnLoadCallback(initialize);
             myChartName.addDrillStep(function (done, params) {
                 var myWhereCond = "\"" + params.label + "\"";
-
+                var columnName = "";
                 if (params.label === "Tilgang - forsikrede") {
-                    var columnName
                     columnName = "B,C";
                 }
                 if (params.label === "Afgang - forsikrede") {
-                    var columnName
                     columnName = "D,E";
                 }
                 if (params.label === "Tilgang - udd.hjælp - udd.parate") {
-                    var columnName
                     columnName = "F,G";
                 }
                 if (params.label === "Afgang - udd.hjælp -udd.parate") {
-                    var columnName
                     columnName = "H,I";
                 }
                 if (params.label === "Tilgang - udd.hjælp - aktivitetsparate") {
-                    var columnName
                     columnName = "J,K";
                 }
                 if (params.label === "Afgang - udd.hjælp - aktivitetsparate") {
-                    var columnName
                     columnName = "L,M";
                 }
 
@@ -854,13 +829,11 @@
                         var arrayLabels_ny = new Array();
                         var arrayInput1_ny = new Array();
                         var arrayInput2 = new Array();
-                        var i;
-                        for (i = 12; i <= 23; i++) {
+                        for (var i = 12; i <= 23; i++) {
                             arrayLabels.push(myData.getValue(i, 0));
                             arrayInput1.push(myData.getValue(i, 1));
                         }
-                        var e;
-                        for (e = 0; e <= 11; e++) {
+                        for (var e = 0; e <= 11; e++) {
                             arrayInput2.push(myData.getValue(e, 1));
                         }
                         // myChartComponentObject = myChartName;
@@ -886,20 +859,20 @@
         }
 
         function addMyDrillDownChart3(options) {
-            var myKey = options.myKey
-            var mySheet = options.mySheet
-            var mySelect = options.mySelect
-            var myChartName = options.myChartName
-            var myCaption = options.myCaption
-            var callback = options.callback
+            var myKey = options.myKey;
+            var mySheet = options.mySheet;
+            var mySelect = options.mySelect;
+            var myChartName = options.myChartName;
+            var myCaption = options.myCaption;
+            var callback = options.callback;
 
-            var myKeyDrill = options.myKeyDrill || options.myKey
-            var mySheetDrill = options.mySheetDrill || options.mySheet
-            var mySelectDrill = options.mySelectDrill || options.mySelect
-            var myChartNameDrill = options.myChartNameDrill || options.myChartName
-            var myCaptionDrill = options.myCaptionDrill || options.myCaption
+            var myKeyDrill = options.myKeyDrill || options.myKey;
+            var mySheetDrill = options.mySheetDrill || options.mySheet;
+            var mySelectDrill = options.mySelectDrill || options.mySelect;
+            var myChartNameDrill = options.myChartNameDrill || options.myChartName;
+            var myCaptionDrill = options.myCaptionDrill || options.myCaption;
 
-            var myChartName = new ChartComponent();
+            myChartName = new ChartComponent();
             myChartName.setCaption(myCaption);
             myChartName.setDimensions(6, 4);
             myChartName.setOption('showLegendFlag', true);
@@ -948,7 +921,7 @@
                     mySeriesName6 = myData.getColumnLabel(6,0);
                     mySeriesName7 = myData.getColumnLabel(7,0);
 
-                    for (var e = 0; e < myData.getNumberOfRows(0) ; e++) {
+                    for (var e = 0; e < myData.getNumberOfRows(0); e++) {
                         arrayLabels.push(myData.getValue(e, 0));
                         arrayInput1.push(myData.getValue(e, 1));
                         arrayInput2.push(myData.getValue(e, 2));
@@ -992,21 +965,18 @@
             initialize();
             //google.setOnLoadCallback(initialize);
             myChartName.addDrillStep(function (done, params) {
+                var columnName = "";
 
                 if (params.label === "Forsikrede") {
-                    var columnName
                     columnName = "B,C,D,E,F,G,H,I";
                 }
                 if (params.label === "Uddannelseshjælp - åbenlyst udd.parate") {
-                    var columnName
                     columnName = "B,C,D,E,F,G,H,I";
                 }
                 if (params.label === "Uddannelseshjælp - udd.parate") {
-                    var columnName
                     columnName = "B,C,D,E,F,G,H,I";
                 }
                 if (params.label === "Uddannelseshjælp - aktivitetsparate") {
-                    var columnName
                     columnName = "B,C,D,E,F,G,H,I";
                 }
 
@@ -1086,18 +1056,18 @@
         // kategoriaksen som første element.
         // OBS - virker kun hvis funktionen Dashboard har navnet "db"
         function addMyUniChart2(myOptions) {
-            var myChartType = myOptions.myChartType || 'line'
-            var isStacked = myOptions.isStacked || false
-            var myChartHeight = myOptions.myChartHeight || 4
-            var myChartWidth = myOptions.myChartWidth || 4
-            var myKey = myOptions.myKey
-            var mySheet = myOptions.mySheet
-            var myQuery = myOptions.myQuery
-            var myChartName = myOptions.myChartName
-            var myCaption = myOptions.myCaption
-            var myShowLegend = myOptions.myShowLegend || true
+            var myChartType = myOptions.myChartType || 'line';
+            var isStacked = myOptions.isStacked || false;
+            var myChartHeight = myOptions.myChartHeight || 4;
+            var myChartWidth = myOptions.myChartWidth || 4;
+            var myKey = myOptions.myKey;
+            var mySheet = myOptions.mySheet;
+            var myQuery = myOptions.myQuery;
+            var myChartName = myOptions.myChartName;
+            var myCaption = myOptions.myCaption;
+            var myShowLegend = myOptions.myShowLegend || true;
 
-            var myChartName = new ChartComponent();
+            myChartName = new ChartComponent();
             myChartName.setCaption(myCaption);
             myChartName.setDimensions(myChartWidth, myChartHeight);
             myChartName.setOption('showLegendFlag', myShowLegend);
@@ -1122,18 +1092,18 @@
                     for (var x = 1; x <= myNumberOfDataColumns; x++) {
                         var arrayElement = "arrayInput" + x;
                         arrayInput[arrayElement] = [];
-                        for (var e = 0; e < myNumberOfRows ; e++) {
+                        for (var e = 0; e < myNumberOfRows; e++) {
                             arrayInput[arrayElement].push(myData.getValue(e, x).toFixed(1));
                         }
                     }
 
-                    for (var i = 0; i < myNumberOfRows ; i++) {
+                    for (var i = 0; i < myNumberOfRows; i++) {
                         arrayLabels.push(myData.getValue(i, 0));
-                    };
+                    }
 
-                    for (var h = 1; h <= myNumberOfDataColumns ; h++) {
+                    for (var h = 1; h <= myNumberOfDataColumns; h++) {
                         arrayHeadings.push(myData.getColumnLabel(h));
-                    };
+                    }
 
                     myChartName.setLabels(arrayLabels);
 
@@ -1277,9 +1247,8 @@
         db3.setDashboardTitle("Politisk mål: Sygefravær");
 
         function addMyKpi3(myKpiObjectName, myKey) {
-            var myKpiObjectName = new KPIGroupComponent();
-            var myKpiObjectName = new KPIGroupComponent();
-            var myKey = String(myKey);
+            myKpiObjectName = new KPIGroupComponent();
+            myKey = String(myKey);
             myKpiObjectName.setDimensions(12, 2);
             myKpiObjectName.lock();
             db3.addComponent(myKpiObjectName);
@@ -1294,7 +1263,7 @@
 
                     myKpiObjectName.addKPI("KpiYd1_3", {
                         caption: String(myData.getValue(0, 0)),
-                        value: Number(myData.getValue(0, 2)),
+                        value: Number(myData.getValue(0, 2))
                     });
                     myKpiObjectName.addKPI("KpiYd2_3", {
                         caption: String(myData.getValue(1, 0)),
@@ -1333,7 +1302,7 @@
 
                 });
 
-            };
+            }
 
             initialize();
         }
@@ -1343,18 +1312,18 @@
         // kategoriaksen som første element.
         // OBS - virker kun hvis funktionen Dashboard har navnet "db"
         function addMyUniChart3(options) {
-            var myChartType = options.myChartType || 'line'
-            var isStacked = options.isStacked || false
-            var myChartHeight = options.myChartHeight || 4
-            var myChartWidth = options.myChartWidth || 4
-            var myKey = options.myKey
-            var mySheet = options.mySheet
-            var myQuery = options.myQuery
-            var myChartName = options.myChartName
-            var myCaption = options.myCaption
-            var myShowLegend = options.myShowLegend || true
+            var myChartType = options.myChartType || 'line';
+            var isStacked = options.isStacked || false;
+            var myChartHeight = options.myChartHeight || 4;
+            var myChartWidth = options.myChartWidth || 4;
+            var myKey = options.myKey;
+            var mySheet = options.mySheet;
+            var myQuery = options.myQuery;
+            var myChartName = options.myChartName;
+            var myCaption = options.myCaption;
+            var myShowLegend = options.myShowLegend || true;
 
-            var myChartName = new ChartComponent();
+            myChartName = new ChartComponent();
             myChartName.setCaption(myCaption);
             myChartName.setDimensions(myChartWidth, myChartHeight);
             myChartName.setOption('showLegendFlag', myShowLegend);
@@ -1378,18 +1347,18 @@
                     for (var x = 1; x <= myNumberOfDataColumns; x++) {
                         var arrayElement = "arrayInput" + x;
                         arrayInput[arrayElement] = [];
-                        for (var e = 0; e < myNumberOfRows ; e++) {
+                        for (var e = 0; e < myNumberOfRows; e++) {
                             arrayInput[arrayElement].push(myData.getValue(e, x).toFixed(1));
                         }
                     }
 
-                    for (var i = 0; i < myNumberOfRows ; i++) {
+                    for (var i = 0; i < myNumberOfRows; i++) {
                         arrayLabels.push(myData.getValue(i, 0));
-                    };
+                    }
 
-                    for (var h = 1; h <= myNumberOfDataColumns ; h++) {
+                    for (var h = 1; h <= myNumberOfDataColumns; h++) {
                         arrayHeadings.push(myData.getColumnLabel(h));
-                    };
+                    }
 
                     myChartName.setLabels(arrayLabels);
 
@@ -1493,9 +1462,8 @@
         db4.setDashboardTitle("Politisk mål: Balancen på arbejdsmarkedet");
        
         function addMyKpi4(myKpiObjectName, myKey) {
-            var myKpiObjectName = new KPIGroupComponent();
-            var myKpiObjectName = new KPIGroupComponent();
-            var myKey = String(myKey);
+            myKpiObjectName = new KPIGroupComponent();
+            myKey = String(myKey);
             myKpiObjectName.setDimensions(12, 2);
             myKpiObjectName.lock();
             db4.addComponent(myKpiObjectName);
@@ -1510,36 +1478,36 @@
 
                     myKpiObjectName.addKPI("KpiYd1_4", {
                         caption: String(myData.getValue(0, 0)),
-                        value: Number(myData.getValue(0, 2)),
+                        value: Number(myData.getValue(0, 2))
                     });
                     myKpiObjectName.addKPI("KpiYd2_4", {
                         caption: String(myData.getValue(1, 0)),
-                        value: Number(myData.getValue(1, 2)),
+                        value: Number(myData.getValue(1, 2))
                         //numberDecimalPoints: 1,
                         //numberSuffix: " pct."
                     });
                     myKpiObjectName.addKPI("KpiYd3_4", {
                         caption: String(myData.getValue(2, 0)),
-                        value: Number(myData.getValue(2, 2)),
+                        value: Number(myData.getValue(2, 2))
                         //numberDecimalPoints: 1,
                         //numberSuffix: " pct."
                     });
                     myKpiObjectName.addKPI("KpiYd4_4", {
                         caption: String(myData.getValue(3, 0)),
-                        value: Number(myData.getValue(3, 2)),
+                        value: Number(myData.getValue(3, 2))
                         //numberDecimalPoints: 1,
                         //numberSuffix: " pct."
                     });
                     myKpiObjectName.addKPI("KpiYd5_4", {
                         caption: String(myData.getValue(4, 0)),
-                        value: Number(myData.getValue(4, 2)),
+                        value: Number(myData.getValue(4, 2))
                         //numberDecimalPoints: 1,
                         //numberSuffix: " pct."
                     });
                     
                     myKpiObjectName.addKPI("KpiYd6_4", {
                         caption: String(myData.getValue(5, 0)),
-                        value: Number(myData.getValue(5, 2)),
+                        value: Number(myData.getValue(5, 2))
                         //numberDecimalPoints: 1,
                         //numberSuffix: " pct."
                     });
@@ -1583,7 +1551,7 @@
 
                 });
 
-            };
+            }
 
             initialize();
         }
@@ -1593,20 +1561,20 @@
         // kategoriaksen som første element.
         // OBS - virker kun hvis funktionen Dashboard har navnet "db"
         function addMyUniChart4(options) {
-            var myChartType = options.myChartType || 'line'
-            var isStacked = options.isStacked || false
-            var myChartHeight = options.myChartHeight || 4
-            var myChartWidth = options.myChartWidth || 4
-            var myKey = options.myKey
-            var mySheet = options.mySheet
-            var myQuery = options.myQuery
-            var myChartName = options.myChartName
-            var myCaption = options.myCaption
-            var myShowLegend = options.myShowLegend || true
-            var myShowTotal = options.stackedTotalDisplay || false
-            var myNumberDecimalPoints = options.myNumberDecimalPoints || 0
+            var myChartType = options.myChartType || 'line';
+            var isStacked = options.isStacked || false;
+            var myChartHeight = options.myChartHeight || 4;
+            var myChartWidth = options.myChartWidth || 4;
+            var myKey = options.myKey;
+            var mySheet = options.mySheet;
+            var myQuery = options.myQuery;
+            var myChartName = options.myChartName;
+            var myCaption = options.myCaption;
+            var myShowLegend = options.myShowLegend || true;
+            var myShowTotal = options.stackedTotalDisplay || false;
+            var myNumberDecimalPoints = options.myNumberDecimalPoints || 0;
 
-            var myChartName = new ChartComponent();
+            myChartName = new ChartComponent();
             myChartName.setCaption(myCaption);
             myChartName.setDimensions(myChartWidth, myChartHeight);
             myChartName.setOption('showLegendFlag', myShowLegend);
@@ -1634,23 +1602,21 @@
                     for (var x = 1; x <= myNumberOfDataColumns; x++) {
                         var arrayElement = "arrayInput" + x;
                         arrayInput[arrayElement] = [];
-                        for (var e = 0; e < myNumberOfRows ; e++) {
-                            var elementValue = Number(myData.getValue(e, x))
+                        for (var e = 0; e < myNumberOfRows; e++) {
+                            var elementValue = Number(myData.getValue(e, x));
                             arrayInput[arrayElement].push(elementValue.toFixed(myNumberDecimalPoints));
                         }
                     }
 
-                    for (var i = 0; i < myNumberOfRows ; i++) {
+                    for (var i = 0; i < myNumberOfRows; i++) {
                         arrayLabels.push(myData.getValue(i, 0));
-                    };
+                    }
 
-                    for (var h = 1; h <= myNumberOfDataColumns ; h++) {
+                    for (var h = 1; h <= myNumberOfDataColumns; h++) {
                         arrayHeadings.push(myData.getColumnLabel(h));
-                    };
-
+                    }
 
                     myChartName.setLabels(arrayLabels);
-
 
                     myChartName.addSeries("deakljoi1", arrayHeadings[0], arrayInput["arrayInput1"], {
                         //numberDecimalSeparator: ",",
@@ -1730,7 +1696,7 @@
                         });
                     }
                     //Options
-                    if (isStacked == true) {
+                    if (isStacked === true) {
                         myChartName.setOption('stackedTotalDisplay', myShowTotal);
                     }
 
@@ -1808,8 +1774,7 @@
         });
 
         tdb.addDashboardTab(db4, {
-            title: "Politisk mål: Balancen på arbejdsmarkedet",
-	    
+            title: "Politisk mål: Balancen på arbejdsmarkedet"    
         });
 
     }, { tabbed: true });
