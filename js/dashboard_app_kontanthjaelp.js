@@ -132,7 +132,7 @@
 	    myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
 	    mySheet: "Integrationsydelse UDV",
         //kth og udd samlet: Herning og hele landet
-	    myQuery: "select A, C, E WHERE A='Tael' OR A<=12 ORDER BY A desc",
+	    myQuery: "select B, C, E WHERE A='Tael' OR A<=12 ORDER BY A desc",
 	    myChartWidth: 4,
         myChartHeight: 4,
         isStacked: false,
