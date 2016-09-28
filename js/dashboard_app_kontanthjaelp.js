@@ -103,7 +103,7 @@
 	addMyUniChart({
 	    myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
         mySheet: "Kontanthjaelp og uddannelseshjaelp UDV",
-	    myQuery: "select B,C,E,G,I,K,M,AI WHERE A='Tael' OR A<=12 ORDER BY A desc",
+	    myQuery: "select B,C,E,G,I,K,M,AJ WHERE A='Tael' OR A<=12 ORDER BY A desc",
 	    myChartWidth: 6,
 	    myChartHeight: 4,
 	    isStacked: true,
@@ -125,22 +125,6 @@
 	    myChartType: "column",
 	    myChartName: "chart1_2",
 	    myCaption: "Antal afsluttede forløb fordelt på varighed"
-	});
-
-
-	addMyUniChart({
-	    myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
-	    mySheet: "Kontanthjaelp og uddannelseshjaelp UDV",
-        //kth og udd samlet: Herning og hele landet
-	    myQuery: "select AF, AG, AI WHERE A='Tael' OR A<=12 ORDER BY A desc",
-	    myChartWidth: 4,
-        myChartHeight: 4,
-        isStacked: false,
-        myShowLegend: true,
-        myChartType: "line",
-	    myChartName: "chart1_4",
-	    myCaption: "Andel af arbejdsstyrken",
-	    myNumberDecimalPoints: 1
 	});
 
 	addMyUniChart({
@@ -171,8 +155,20 @@
 	    myChartName: "chart1_6",
 	    myCaption: "Andel af arbejdsstyrken",
 	    myNumberDecimalPoints: 1
-
 	});
-
+	addMyUniChart({
+	    myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
+	    mySheet: "Kontanthjaelp og uddannelseshjaelp UDV",
+	    //kth og udd samlet: Herning og hele landet
+	    myQuery: "select AF, AK, AH WHERE A='Tael' OR A<=12 ORDER BY A desc",
+	    myChartWidth: 4,
+	    myChartHeight: 4,
+	    isStacked: false,
+	    myShowLegend: true,
+	    myChartType: "line",
+	    myChartName: "chart1_4",
+	    myCaption: "Andel af arbejdsstyrken",
+	    myNumberDecimalPoints: 1
+	});
 
 });
