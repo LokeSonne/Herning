@@ -36,12 +36,17 @@
 	            myKpiObjectName.addKPI("KpiYd4", {
 	                caption: String(myData.getValue(3, 0)),
 	                value: Number(myData.getValue(3, 2)),
-	                numberDecimalPoints: 1,
-	                numberSuffix: " pct."
+	                // numberSuffix: " pct."
 	            });
 	            myKpiObjectName.addKPI("KpiYd5", {
 	                caption: String(myData.getValue(4, 0)),
 	                value: Number(myData.getValue(4, 2)),
+	                numberDecimalPoints: 1,
+	                numberSuffix: " pct."
+	            });
+	            myKpiObjectName.addKPI("KpiYd6", {
+	                caption: String(myData.getValue(5, 0)),
+	                value: Number(myData.getValue(5, 2)),
 	                numberDecimalPoints: 1,
 	                numberSuffix: " pct."
 	            });
@@ -67,16 +72,21 @@
 	                dateInput: String(myData.getValue(2, 1)),
 	                prefix: "Fuldtidspersoner "
 	            });
-
 	            addTooltip({
 	                kpiId: "KpiYd4",
 	                dateInput: String(myData.getValue(3, 1)),
-	                prefix: "Kontanthjælp og uddannelseshjælp - andel af arbejdsstyrken: Herning "
+	                prefix: "Fuldtidspersoner "
 	            });
 
 	            addTooltip({
 	                kpiId: "KpiYd5",
 	                dateInput: String(myData.getValue(4, 1)),
+	                prefix: "Kontanthjælp og uddannelseshjælp - andel af arbejdsstyrken: Herning "
+	            });
+
+	            addTooltip({
+	                kpiId: "KpiYd6",
+	                dateInput: String(myData.getValue(5, 1)),
 	                prefix: "Kontanthjælp og uddannelseshjælp - andel af arbejdsstyrken: Hele landet "
 	            });
 
@@ -120,9 +130,9 @@
 
 	addMyUniChart({
 	    myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
-	    mySheet: "Kontanthjaelp og uddannelseshjaelp UDV",
+	    mySheet: "Integrationsydelse UDV",
         //kth og udd samlet: Herning og hele landet
-	    myQuery: "select AC, AD, AE WHERE A='Tael' OR A<=12 ORDER BY A desc",
+	    myQuery: "select A, C, E WHERE A='Tael' OR A<=12 ORDER BY A desc",
 	    myChartWidth: 4,
         myChartHeight: 4,
         isStacked: false,

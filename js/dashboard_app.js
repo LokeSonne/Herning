@@ -561,7 +561,7 @@
         addMyUniChart1({
             myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
             mySheet: "Fuldtids UDV",
-            myQuery: "select B, C+D, E+F, G+H, I+J, K+M, L, C+D+E+F+G+H+I+J+K+M+L WHERE A='Tael' OR A<=12 ORDER BY A desc label B 'Dato', C+D 'Forsikrede og arbejdsmarkedsyd.',E+F 'Kontanthjælp og uddannelseshjælp', G+H 'Sygedagpenge og jobafklaring', I+J 'Fleksjob og ledighedsyd.', K+M 'Ressourceforløb og revalidering', L 'Førtidspension', C+D+E+F+G+H+I+J+K+M+L 'Total'",
+            myQuery: "select B, C+D, E+F+O, G+H, I+J, K+M, L, C+D+E+F+G+H+I+J+K+M+L WHERE A='Tael' OR A<=12 ORDER BY A desc label B 'Dato', C+D 'Forsikrede og arbejdsmarkedsyd.',E+F+O 'Kont.hjælp,udd.hjælp og integrationsydelse', G+H 'Sygedagpenge og jobafklaring', I+J 'Fleksjob og ledighedsyd.', K+M 'Ressourceforløb og revalidering', L 'Førtidspension', C+D+E+F+G+H+I+J+K+M+L 'Total'",
             myChartWidth: 7,
             myChartHeight: 6,
             isStacked: true,
