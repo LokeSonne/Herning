@@ -1170,10 +1170,17 @@
                     if (myNumberOfDataColumns >= 10) {
                         myChartName.addSeries("deakljoi10", arrayHeadings[9], arrayInput["arrayInput10"], {
                             seriesStacked: isStacked,
+                            seriesDisplayType: myChartType,
+                            seriesColor: '#FFED0D'
+                        });
+                    }
+                    if (myNumberOfDataColumns >= 11) {
+                        myChartName.addSeries("deakljoi11", arrayHeadings[10], arrayInput["arrayInput11"], {
+                            seriesStacked: isStacked,
                             seriesDisplayType: 'line',
                             seriesColor: '#151132'
                         });
-                    }                    
+                    }
                     // Don't forget to call unlock or the data won't be displayed
                     myChartName.unlock();
                 });
@@ -1212,7 +1219,7 @@
         addMyUniChart2({
             myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
             mySheet: "Unge UDV",
-            myQuery: "select E,F,J,AF,AG,AH,AI,AJ,AK,AL, F+J+AF+AG+AH+AI+AJ+AK+AL WHERE A='Tael' OR A<=12 ORDER BY A desc label F+J+AF+AG+AH+AI+AJ+AK+AL 'Total'",
+            myQuery: "select E,F,J,AF,AG,AH,AI,AJ,AK,AL,AN, F+J+AF+AG+AH+AI+AJ+AK+AL+AN WHERE A='Tael' OR A<=12 ORDER BY A desc label F+J+AF+AG+AH+AI+AJ+AK+AL+AN 'Total'",
             myChartWidth: 6,
             myChartHeight: 4,
             isStacked: true,
