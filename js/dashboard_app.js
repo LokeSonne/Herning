@@ -374,7 +374,7 @@
                     var mySeriesName8 = new String();
                     var mySeriesName9 = new String();
                     var mySeriesName10 = new String();
-                    var mySeriesName11 = new String();
+                    //var mySeriesName11 = new String();
 
                     var arrayLabels = new Array();
                     var arrayInput1 = new Array();
@@ -387,7 +387,7 @@
                     var arrayInput8 = new Array();
                     var arrayInput9 = new Array();
                     var arrayInput10 = new Array();
-                    var arrayInput11 = new Array();
+                    //var arrayInput11 = new Array();
 
                     mySeriesName1 = myData.getValue(0, 0);
                     mySeriesName2 = myData.getValue(1, 2);
@@ -399,7 +399,7 @@
                     mySeriesName8 = myData.getValue(7, 14);
                     mySeriesName9 = myData.getValue(8, 16);
                     mySeriesName10 = myData.getValue(9, 18);
-                    mySeriesName11 = myData.getValue(10, 20);
+                    //mySeriesName11 = myData.getValue(10, 20);
 
                     for (var i = 1; i < myData.getNumberOfColumns(0); i += 2) {
                         arrayLabels.push(myData.getColumnLabel(i, 0));
@@ -416,7 +416,7 @@
                         arrayInput8.push(myData.getValue(e, 15));
                         arrayInput9.push(myData.getValue(e, 17));
                         arrayInput10.push(myData.getValue(e, 19));
-                        arrayInput11.push(myData.getValue(e, 21));
+                        //arrayInput11.push(myData.getValue(e, 21));
                     }
 
                     // myChartComponentObject = myChartName;
@@ -484,9 +484,9 @@
                 if (params.label === "Forsikrede") {
                     columnName = "B,C";
                 }
-                if (params.label === "Arbejdsmarkedsyd.") {
-                    columnName = "B,E";
-                }
+                //if (params.label === "Arbejdsmarkedsyd.") {
+                //    columnName = "B,E";
+                //}
                 if (params.label === "Kontanthjælp") {
                     columnName = "F,G";
                 }
@@ -561,7 +561,7 @@
         addMyUniChart1({
             myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
             mySheet: "Fuldtids UDV",
-            myQuery: "select B, C+D, E+F+O, G+H, I+J, K+M, L, C+D+E+F+G+H+I+J+K+M+L WHERE A='Tael' OR A<=12 ORDER BY A desc label B 'Dato', C+D 'Forsikrede og arbejdsmarkedsyd.',E+F+O 'Kont.hjælp,udd.hjælp og integrationsydelse', G+H 'Sygedagpenge og jobafklaring', I+J 'Fleksjob og ledighedsyd.', K+M 'Ressourceforløb og revalidering', L 'Førtidspension', C+D+E+F+G+H+I+J+K+M+L 'Total'",
+            myQuery: "select B, C+D, E+F+O, G+H, I+J, K+M, L, C+D+E+F+O+G+H+I+J+K+M+L WHERE A='Tael' OR A<=12 ORDER BY A desc label B 'Dato', C+D 'Forsikrede og yd. efter opbrugt dagp.',E+F+O 'Kont.hjælp,udd.hjælp og integrationsydelse', G+H 'Sygedagpenge og jobafklaring', I+J 'Fleksjob og ledighedsyd.', K+M 'Ressourceforløb og revalidering', L 'Førtidspension', C+D+E+F+O+G+H+I+J+K+M+L 'Total'",
             myChartWidth: 7,
             myChartHeight: 6,
             isStacked: true,
@@ -576,7 +576,7 @@
             myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
             mySheet: "TILGANG",
             mySheetDrill: "UDV TILGANG",
-            mySelect: "select B,C, D,E, F,G, H,I, J,K, L,M, N,O, P,Q, R,S, T,U, V,W WHERE A=0 label B 'Dato', C 'Forsikrede', D 'Date', E 'Arbejdsmarkedsyd.', F 'Dato', G 'Kontanthjælp', H 'Date', I 'Uddannelseshjælp', J 'Date', K 'Sygedagpenge', L 'Date', M 'Jobafklaring', N 'Date', O 'Fleksjob', P 'Date', Q 'Ledighedsyd.', R 'Date', S 'Ressourceforløb', T 'Date', U 'Førtidspension', V 'Date', W 'Revalidering'",
+            mySelect: "select B,C, D,E ,F,G, H,I, J,K, L,M, N,O, P,Q, R,S, T,U WHERE A=0 label B 'Dato', C 'Forsikrede', D 'Dato', E 'Kontanthjælp', F 'Date', G 'Uddannelseshjælp', H 'Date', I 'Sygedagpenge', J 'Date', K 'Jobafklaring', L 'Date', M 'Fleksjob', N 'Date', O 'Ledighedsyd.', P 'Date', Q 'Ressourceforløb', R 'Date', S 'Førtidspension', T 'Date', U 'Revalidering'",
             myChartName: "chart1_2",
             myCaption: "Antal påbegyndte forløb"
         });
@@ -585,7 +585,7 @@
             myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
             mySheet: "AFGANG",
             mySheetDrill: "UDV AFGANG",
-            mySelect: "select B,C, D,E, F,G, H,I, J,K, L,M, N,O, P,Q, R,S, T,U, V,W WHERE A=0 label B 'Dato', C 'Forsikrede', D 'Date', E 'Arbejdsmarkedsyd.', F 'Dato', G 'Kontanthjælp', H 'Date', I 'Uddannelseshjælp', J 'Date', K 'Sygedagpenge', L 'Date', M 'Jobafklaring', N 'Date', O 'Fleksjob', P 'Date', Q 'Ledighedsyd.', R 'Date', S 'Ressourceforløb', T 'Date', U 'Førtidspension', V 'Date', W 'Revalidering'",
+            mySelect: "select B,C, D,E ,F,G, H,I, J,K, L,M, N,O, P,Q, R,S, T,U WHERE A=0 label B 'Dato', C 'Forsikrede', D 'Dato', E 'Kontanthjælp', F 'Date', G 'Uddannelseshjælp', H 'Date', I 'Sygedagpenge', J 'Date', K 'Jobafklaring', L 'Date', M 'Fleksjob', N 'Date', O 'Ledighedsyd.', P 'Date', Q 'Ressourceforløb', R 'Date', S 'Førtidspension', T 'Date', U 'Revalidering'",
             myChartName: "chart1_3",
             myCaption: "Antal afsluttede forløb"
         });
