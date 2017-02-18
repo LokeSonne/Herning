@@ -1251,216 +1251,29 @@
         // -----------------------Dashboard 3-------------------------------------------------------------------------
         // -----------------------------------------------------------------------------------------------------------
         var db3 = new Dashboard();
-        db3.setDashboardTitle("Politisk mål: Sygefravær");
+        db3.setDashboardTitle("Politisk mål: Integration");
 
-        function addMyKpi3(myKpiObjectName, myKey) {
-            myKpiObjectName = new KPIGroupComponent();
-            myKey = String(myKey);
-            myKpiObjectName.setDimensions(12, 2);
-            myKpiObjectName.lock();
-            db3.addComponent(myKpiObjectName);
-
-            function initialize() {
-                // The URL of the spreadsheet to source data from.
-                var query = new google.visualization.Query("https://docs.google.com/spreadsheets/d/" + myKey + "/gviz/tq?sheet=KPI");
-                query.setQuery("select C,D,E WHERE B='Sygefravaer'");
-                query.send(function processResponse(response) {
-
-                    var myData = response.getDataTable();
-
-                    myKpiObjectName.addKPI("KpiYd1_3", {
-                        caption: String(myData.getValue(0, 0)),
-                        value: Number(myData.getValue(0, 2))
-                    });
-                    myKpiObjectName.addKPI("KpiYd2_3", {
-                        caption: String(myData.getValue(1, 0)),
-                        value: Number(myData.getValue(1, 2)),
-                        numberDecimalPoints: 1,
-                        numberSuffix: " pct."
-                    });
-                    myKpiObjectName.addKPI("KpiYd3_3", {
-                        caption: String(myData.getValue(2, 0)),
-                        value: Number(myData.getValue(2, 2)),
-                        numberDecimalPoints: 1,
-                        numberSuffix: " pct."
-                    });
-
-                    // Don't forget to call unlock or the data won't be displayed
-                    myKpiObjectName.unlock();
-                    myKpiObjectName.setCaption("Nøgletal");// + numberLabels.toLowerCase());
-
-                    addTooltip({
-                        kpiId: "KpiYd1_3",
-                        dateInput: String(myData.getValue(0, 1)),
-                        prefix: "Antal "
-                    });
-
-                    addTooltip({
-                        kpiId: "KpiYd2_3",
-                        dateInput: String(myData.getValue(1, 1)),
-                        prefix: "Andel "
-                    });
-
-                    addTooltip({
-                        kpiId: "KpiYd3_3",
-                        dateInput: String(myData.getValue(2, 1)),
-                        prefix: "Andel "
-                    });
-
-                });
-
-            }
-
-            initialize();
+        function addMyLinkKpi(y) {
+            var kpi = new KPIGroupComponent();
+            kpi.setDimensions(12, 2);
+            kpi.setCaption('Rapport om integration');
+            kpi.addKPI('december', {
+                caption: 'December 2016 - klik for at åbne rapport',
+                value: 0
+            });
+            kpi.setKPIValueColor('december', '#fff');
+            db3.addComponent(kpi);
+            kpi.lock();
+            $('#dbTarget').on('click', '#december', function (e) {
+                e.stopPropagation();
+                window.open("http://www.herning.dk/media/14638057/noegletal-integration-december-2016.pdf");
+                return false;
+            });
+            kpi.unlock();
+    
         }
-
-        // addMyUniChart er en function, der viser et chart. Den er paremtriseret, så den kan anvendes til de fleste charts
-        // - dog ikke med drillstep eller pie-charts. For at fungere skal den query, der henter data fra Spreadsheet have 
-        // kategoriaksen som første element.
-        // OBS - virker kun hvis funktionen Dashboard har navnet "db"
-        function addMyUniChart3(options) {
-            var myChartType = options.myChartType || 'line';
-            var isStacked = options.isStacked || false;
-            var myChartHeight = options.myChartHeight || 4;
-            var myChartWidth = options.myChartWidth || 4;
-            var myKey = options.myKey;
-            var mySheet = options.mySheet;
-            var myQuery = options.myQuery;
-            var myChartName = options.myChartName;
-            var myCaption = options.myCaption;
-            var myShowLegend = options.myShowLegend || true;
-
-            myChartName = new ChartComponent();
-            myChartName.setCaption(myCaption);
-            myChartName.setDimensions(myChartWidth, myChartHeight);
-            myChartName.setOption('showLegendFlag', myShowLegend);
-            myChartName.lock();
-            db3.addComponent(myChartName);
-
-            function initialize() {
-                // The URL of the spreadsheet to source data from.
-                var query = new google.visualization.Query("https://docs.google.com/spreadsheets/d/" + myKey + "/gviz/tq?sheet=" + mySheet);
-                query.setQuery(myQuery);
-                query.send(function processResponse(response) {
-                    var myData = response.getDataTable();
-
-                    var arrayLabels = [];
-                    var arrayHeadings = [];
-
-                    var myNumberOfDataColumns = myData.getNumberOfColumns(0) - 1;
-                    var myNumberOfRows = myData.getNumberOfRows(0);
-
-                    var arrayInput = [];
-                    for (var x = 1; x <= myNumberOfDataColumns; x++) {
-                        var arrayElement = "arrayInput" + x;
-                        arrayInput[arrayElement] = [];
-                        for (var e = 0; e < myNumberOfRows; e++) {
-                            arrayInput[arrayElement].push(myData.getValue(e, x).toFixed(1));
-                        }
-                    }
-
-                    for (var i = 0; i < myNumberOfRows; i++) {
-                        arrayLabels.push(myData.getValue(i, 0));
-                    }
-
-                    for (var h = 1; h <= myNumberOfDataColumns; h++) {
-                        arrayHeadings.push(myData.getColumnLabel(h));
-                    }
-
-                    myChartName.setLabels(arrayLabels);
-
-
-                    myChartName.addSeries("deakljoi1", arrayHeadings[0], arrayInput["arrayInput1"], {
-                        seriesStacked: isStacked,
-                        seriesDisplayType: myChartType
-                    });
-
-                    if (myNumberOfDataColumns >= 2) {
-                        myChartName.addSeries("deakljoi2", arrayHeadings[1], arrayInput["arrayInput2"], {
-                            seriesStacked: isStacked,
-                            seriesDisplayType: myChartType
-                        });
-                    }
-
-                    if (myNumberOfDataColumns >= 3) {
-                        myChartName.addSeries("deakljoi3", arrayHeadings[2], arrayInput["arrayInput3"], {
-                            seriesStacked: isStacked,
-                            seriesDisplayType: myChartType
-                        });
-                    }
-
-                    if (myNumberOfDataColumns >= 4) {
-                        myChartName.addSeries("deakljoi4", arrayHeadings[3], arrayInput["arrayInput4"], {
-                            seriesStacked: isStacked,
-                            seriesDisplayType: myChartType
-                        });
-                    }
-                    if (myNumberOfDataColumns >= 5) {
-                        myChartName.addSeries("deakljoi5", arrayHeadings[4], arrayInput["arrayInput5"], {
-                            seriesStacked: isStacked,
-                            seriesDisplayType: myChartType
-                        });
-                    }
-                    if (myNumberOfDataColumns >= 6) {
-                        myChartName.addSeries("deakljoi6", arrayHeadings[5], arrayInput["arrayInput6"], {
-                            seriesStacked: isStacked,
-                            seriesDisplayType: myChartType
-                        });
-                    }
-                    if (myNumberOfDataColumns >= 7) {
-                        myChartName.addSeries("deakljoi7", arrayHeadings[6], arrayInput["arrayInput7"], {
-                            seriesStacked: isStacked,
-                            seriesDisplayType: myChartType
-                        });
-                    }
-                    if (myNumberOfDataColumns >= 8) {
-                        myChartName.addSeries("deakljoi8", arrayHeadings[7], arrayInput["arrayInput8"], {
-                            seriesStacked: isStacked,
-                            seriesDisplayType: myChartType
-                        });
-                    }
-                    if (myNumberOfDataColumns >= 9) {
-                        myChartName.addSeries("deakljoi9", arrayHeadings[8], arrayInput["arrayInput9"], {
-                            seriesStacked: isStacked,
-                            seriesDisplayType: myChartType,
-                            seriesColor: '#6CDEC7'
-                        });
-                    }
-                    // Don't forget to call unlock or the data won't be displayed
-                    myChartName.unlock();
-                });
-            }
-            initialize();
-        }
-
-        //// ---------------------------------------------------------------------
-
-        addMyKpi3("Kpi3", "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw");
-
-        addMyUniChart3({
-            myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
-            mySheet: "Sygefravaer UDV",
-            myQuery: "select B,C WHERE A='Tael' OR A<=12 ORDER BY A desc",
-            myChartWidth: 6,
-            myChartHeight: 4,
-            isStacked: false,
-            myShowLegend: false,
-            myChartType: "line",
-            myChartName: "chart3_1",
-            myCaption: "Antal forløb"
-        });
-        addMyUniChart3({
-            myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
-            mySheet: "Sygefravaer UDV",
-            myQuery: "select D, E, G WHERE A='Tael' OR A<=12 ORDER BY A desc",
-            myChartWidth: 6,
-            myChartHeight: 4,
-            isStacked: false,
-            myShowLegend: true,
-            myChartType: "line",
-            myChartName: "chart3_2",
-            myCaption: "Andel sygedagpengeforløb med mindst 22 ugers varighed"
-        });
+        addMyLinkKpi();
+       
 
         // -----------------------------------------------------------------------------------------------------------
         // -----------------------Dashboard 4-------------------------------------------------------------------------
