@@ -1253,27 +1253,206 @@
         var db3 = new Dashboard();
         db3.setDashboardTitle("Politisk mål: Integration");
 
-        function addMyLinkKpi(y) {
-            var kpi = new KPIGroupComponent();
-            kpi.setDimensions(12, 2);
-            kpi.setCaption('Rapport om integration');
-            kpi.addKPI('december', {
-                caption: 'December 2016 - klik for at åbne rapport',
-                value: 0
-            });
-            kpi.setKPIValueColor('december', '#fff');
-            db3.addComponent(kpi);
-            kpi.lock();
-            $('#dbTarget').on('click', '#december', function (e) {
-                e.stopPropagation();
-                window.open("http://www.herning.dk/media/14638057/noegletal-integration-december-2016.pdf");
-                return false;
-            });
-            kpi.unlock();
+        // function addMyLinkKpi(y) {
+        //     var kpi = new KPIGroupComponent();
+        //     kpi.setDimensions(12, 2);
+        //     kpi.setCaption('Rapport om integration');
+        //     kpi.addKPI('december', {
+        //         caption: 'December 2016 - klik for at åbne rapport',
+        //         value: 0
+        //     });
+        //     kpi.setKPIValueColor('december', '#fff');
+        //     db3.addComponent(kpi);
+        //     kpi.lock();
+        //     $('#dbTarget').on('click', '#december', function (e) {
+        //         e.stopPropagation();
+        //         window.open("http://www.herning.dk/media/14638057/noegletal-integration-december-2016.pdf");
+        //         return false;
+        //     });
+        //     kpi.unlock();
     
+        // }
+        // addMyLinkKpi();
+
+        function addMyKpi3(myKpiObjectName, myKey) {
+            myKpiObjectName = new KPIGroupComponent();
+            myKey = String(myKey);
+            myKpiObjectName.setDimensions(12, 2);
+            myKpiObjectName.lock();
+            db3.addComponent(myKpiObjectName);
+
+            function initialize() {
+                // The URL of the spreadsheet to source data from.
+                var query = new google.visualization.Query("https://docs.google.com/spreadsheets/d/" + myKey + "/gviz/tq?sheet=KPI");
+                query.setQuery("select C,D,E WHERE B='Integration'");
+                query.send(function processResponse(response) {
+
+                    var myData = response.getDataTable();
+
+                    myKpiObjectName.addKPI("KpiYd1_3", {
+                        caption: String(myData.getValue(0, 0)),
+                        value: Number(myData.getValue(0, 2))
+                    });
+                    myKpiObjectName.addKPI("KpiYd2_3", {
+                        caption: String(myData.getValue(1, 0)),
+                        value: Number(myData.getValue(1, 2)),
+                        numberDecimalPoints: 1,
+                        numberSuffix: " pct."
+                    });
+                    myKpiObjectName.addKPI("KpiYd3_3", {
+                        caption: String(myData.getValue(2, 0)),
+                        value: Number(myData.getValue(2, 2)),
+                        numberDecimalPoints: 1,
+                        numberSuffix: " pct."
+                    });
+
+                    // Don't forget to call unlock or the data won't be displayed
+                    myKpiObjectName.unlock();
+                    myKpiObjectName.setCaption("Nøgletal");// + numberLabels.toLowerCase());
+
+                    addTooltip({
+                        kpiId: "KpiYd1_3",
+                        dateInput: String(myData.getValue(0, 1)),
+                        prefix: "Fuldtidspersoner "
+                    });
+
+                    addTooltip({
+                        kpiId: "KpiYd2_3",
+                        dateInput: String(myData.getValue(1, 1)),
+                        prefix: "Andel af arbejdsstyrken "
+                    });
+
+                    addTooltip({
+                        kpiId: "KpiYd3_3",
+                        dateInput: String(myData.getValue(2, 1)),
+                        prefix: "Andel af arbejdsstyrken "
+                    });
+
+                });
+
+            }
+
+            initialize();
+        };
+
+        // addMyUniChart er en function, der viser et chart. Den er paremtriseret, så den kan anvendes til de fleste charts
+        // - dog ikke med drillstep eller pie-charts. For at fungere skal den query, der henter data fra Spreadsheet have 
+        // kategoriaksen som første element.
+        // OBS - virker kun hvis funktionen Dashboard har navnet "db"
+        function addMyUniChart3(myOptions) {
+            var myChartType = myOptions.myChartType || 'line';
+            var isStacked = myOptions.isStacked || false;
+            var myChartHeight = myOptions.myChartHeight || 4;
+            var myChartWidth = myOptions.myChartWidth || 4;
+            var myKey = myOptions.myKey;
+            var mySheet = myOptions.mySheet;
+            var myQuery = myOptions.myQuery;
+            var myChartName = myOptions.myChartName;
+            var myCaption = myOptions.myCaption;
+            var myShowLegend = myOptions.myShowLegend || true;
+
+            myChartName = new ChartComponent();
+            myChartName.setCaption(myCaption);
+            myChartName.setDimensions(myChartWidth, myChartHeight);
+            myChartName.setOption('showLegendFlag', myShowLegend);
+            myChartName.lock();
+            db3.addComponent(myChartName);
+            var whatId = myChartName.getID();
+
+            function initialize() {
+                // The URL of the spreadsheet to source data from.
+                var query = new google.visualization.Query("https://docs.google.com/spreadsheets/d/" + myKey + "/gviz/tq?sheet=" + mySheet);
+                query.setQuery(myQuery);
+                query.send(function processResponse(response) {
+                    var myData = response.getDataTable();
+
+                    var arrayLabels = [];
+                    var arrayHeadings = [];
+
+                    var myNumberOfDataColumns = myData.getNumberOfColumns(0) - 1;
+                    var myNumberOfRows = myData.getNumberOfRows(0);
+
+                    var arrayInput = [];
+                    for (var x = 1; x <= myNumberOfDataColumns; x++) {
+                        var arrayElement = "arrayInput" + x;
+                        arrayInput[arrayElement] = [];
+                        for (var e = 0; e < myNumberOfRows; e++) {
+                            arrayInput[arrayElement].push(myData.getValue(e, x).toFixed(1));
+                        }
+                    }
+
+                    for (var i = 0; i < myNumberOfRows; i++) {
+                        arrayLabels.push(myData.getValue(i, 0));
+                    }
+
+                    for (var h = 1; h <= myNumberOfDataColumns; h++) {
+                        arrayHeadings.push(myData.getColumnLabel(h));
+                    }
+
+                    myChartName.setLabels(arrayLabels);
+
+
+                    myChartName.addSeries("deakljoi1", arrayHeadings[0], arrayInput["arrayInput1"], {
+                        seriesStacked: isStacked,
+                        seriesDisplayType: myChartType
+                    });
+
+                    if (myNumberOfDataColumns >= 2) {
+                        myChartName.addSeries("deakljoi2", arrayHeadings[1], arrayInput["arrayInput2"], {
+                            seriesStacked: isStacked,
+                            seriesDisplayType: myChartType
+                        });
+                    }
+
+                    if (myNumberOfDataColumns >= 3) {
+                        myChartName.addSeries("deakljoi3", arrayHeadings[2], arrayInput["arrayInput3"], {
+                            seriesStacked: isStacked,
+                            seriesDisplayType: myChartType
+                        });
+                    }
+
+                    if (myNumberOfDataColumns >= 4) {
+                        myChartName.addSeries("deakljoi4", arrayHeadings[3], arrayInput["arrayInput4"], {
+                            seriesStacked: isStacked,
+                            seriesDisplayType: myChartType
+                        });
+                    }
+                    if (myNumberOfDataColumns >= 5) {
+                        myChartName.addSeries("deakljoi5", arrayHeadings[4], arrayInput["arrayInput5"], {
+                            seriesStacked: isStacked,
+                            seriesDisplayType: myChartType
+                        });
+                    }
+                    if (myNumberOfDataColumns >= 6) {
+                        myChartName.addSeries("deakljoi6", arrayHeadings[5], arrayInput["arrayInput6"], {
+                            seriesStacked: false,
+                            seriesDisplayType: 'line',
+                            seriesColor: "#d77fb4"
+                        });
+                    }
+                    // Don't forget to call unlock or the data won't be displayed
+                    myChartName.unlock();
+                });
+            }
+            initialize();
         }
-        addMyLinkKpi();
-       
+
+        ////// ---------------------------------------------------------------------
+
+        addMyKpi3("Kpi3", "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw");
+
+        addMyUniChart3({
+            myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
+            mySheet: "Integrationsydelse UDV",
+            myQuery: "select F,H,I,J,K,L,G WHERE A='Tael' OR A<=12 ORDER BY A desc label G 'Total'",
+            myChartWidth: 6,
+            myChartHeight: 4,
+            isStacked: true,
+            myShowLegend: true,
+            myChartType: "area",
+            myChartName: "chart3_1",
+            myCaption: "Antal personer"
+        });
 
         // -----------------------------------------------------------------------------------------------------------
         // -----------------------Dashboard 4-------------------------------------------------------------------------
