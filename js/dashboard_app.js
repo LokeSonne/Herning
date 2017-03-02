@@ -1445,7 +1445,7 @@
             myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
             mySheet: "Integrationsydelse UDV",
             myQuery: "select F,H,I,J,K,L,G WHERE A='Tael' OR A<=12 ORDER BY A desc label G 'Total'",
-            myChartWidth: 6,
+            myChartWidth: 4,
             myChartHeight: 4,
             isStacked: true,
             myShowLegend: true,
@@ -1456,14 +1456,27 @@
 
         addMyUniChart3({
             myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
+            mySheet: "Integrationsydelse UDV",
+            myQuery: "select M,N,O WHERE A='Tael' OR A<=12 ORDER BY A desc",
+            myChartWidth: 4,
+            myChartHeight: 4,
+            isStacked: true,
+            myShowLegend: true,
+            myChartType: "area",
+            myChartName: "chart3_2",
+            myCaption: "Aktiverede"
+        });
+
+        addMyUniChart3({
+            myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
             mySheet: "grund_nyfremtid_antal",
             myQuery: "select A,B",
-            myChartWidth: 6,
+            myChartWidth: 4,
             myChartHeight: 4,
             isStacked: false,
             myShowLegend: true,
             myChartType: "column",
-            myChartName: "chart3_1",
+            myChartName: "chart3_3",
             myCaption: "Ny fremtid: Deltagere"
         });        
 
