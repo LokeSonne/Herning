@@ -1454,6 +1454,19 @@
             myCaption: "Antal personer"
         });
 
+        addMyUniChart3({
+            myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
+            mySheet: "grund_nyfremtid_antal",
+            myQuery: "select A,B",
+            myChartWidth: 6,
+            myChartHeight: 4,
+            isStacked: false,
+            myShowLegend: true,
+            myChartType: "column",
+            myChartName: "chart3_1",
+            myCaption: "Ny fremtid: Deltagere"
+        });        
+
         // -----------------------------------------------------------------------------------------------------------
         // -----------------------Dashboard 4-------------------------------------------------------------------------
         // -----------------------------------------------------------------------------------------------------------
