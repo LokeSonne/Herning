@@ -130,7 +130,7 @@
 
     addMyUniChart({
         myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
-        mySheet: "Afsluttede Ressourceforloeb",
+        mySheet: "grund_ress_afsluttede",
         myQuery: "select B,C WHERE A='Tael' OR A<=12 ORDER BY A desc",
         myChartWidth: 6,
         myChartHeight: 3,
