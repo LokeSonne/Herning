@@ -598,91 +598,130 @@
         var db2 = new Dashboard();
         db2.setDashboardTitle("Politisk mål: Unge under 25 år");
 
-        function addMyKpi2(myKpiObjectName, myKey) {
+        function addMyDoubleKpi2(myKpiObjectName, myKey) {
             myKpiObjectName = new KPIGroupComponent();
             myKey = String(myKey);
             myKpiObjectName.setDimensions(12, 2);
             myKpiObjectName.lock();
             db2.addComponent(myKpiObjectName);
 
+            var myKpiObjectName2 = myKpiObjectName + "2";
+            myKpiObjectName2 = new KPIGroupComponent();
+            myKpiObjectName2.setDimensions(12, 2);
+            myKpiObjectName2.lock();
+            db2.addComponent(myKpiObjectName2);
+
+
             function initialize() {
                 // The URL of the spreadsheet to source data from.
                 var query = new google.visualization.Query("https://docs.google.com/spreadsheets/d/" + myKey + "/gviz/tq?sheet=KPI");
-                query.setQuery("select C,D,E WHERE B='Unge' ORDER BY K LIMIT 3");
+                query.setQuery("select C,D,E WHERE B='Unge' ORDER BY K LIMIT 8");
                 query.send(function processResponse(response) {
 
                     var myData = response.getDataTable();
 
-                    var numberInput1 = new Number();
-                    var numberInput2 = new Number();
-                    var numberInput3 = new Number();
-
-                    var captionInput1 = new String();
-                    var captionInput2 = new String();
-                    var captionInput3 = new String();
-
-                    var dateInput1 = new String();
-                    var dateInput2 = new String();
-                    var dateInput3 = new String();
-
-                    numberInput1 = Number(myData.getValue(0, 2));
-                    numberInput2 = Number(myData.getValue(1, 2));
-                    numberInput3 = Number(myData.getValue(2, 2));
-
-                    captionInput1 = String(myData.getValue(0, 0));
-                    captionInput2 = String(myData.getValue(1, 0));
-                    captionInput3 = String(myData.getValue(2, 0));
-
-                    dateInput1 = String(myData.getValue(0, 1));
-                    dateInput2 = String(myData.getValue(1, 1));
-                    dateInput3 = String(myData.getValue(2, 1));
-
                     myKpiObjectName.addKPI("KpiYd1_2", {
-                        caption: captionInput1,
-                        value: numberInput1.toFixed(1)
-                        //numberDecimalPoints: 2,
-                        //numberSuffix: " pct."
+                        caption: String(myData.getValue(0, 0)),
+                        value: Number(myData.getValue(0, 2)).toFixed(0)
+                        //numberPrefix: dateInput1.toLowerCase()
                     });
                     myKpiObjectName.addKPI("KpiYd2_2", {
-                        caption: captionInput2,
-                        value: numberInput2.toFixed(1),
-                        //numberDecimalPoints: 1,
+                        caption: String(myData.getValue(1, 0)),
+                        value: Number(myData.getValue(1, 2)).toFixed(1),
                         numberSuffix: " pct."
                     });
                     myKpiObjectName.addKPI("KpiYd3_2", {
-                        caption: captionInput3,
-                        value: numberInput3.toFixed(1),
-                        //numberDecimalPoints: 1,
+                        caption: String(myData.getValue(2, 0)),
+                        value: Number(myData.getValue(2, 2)).toFixed(1),
                         numberSuffix: " pct."
                     });
-
+                    myKpiObjectName.addKPI("KpiYd4_2", {
+                        caption: String(myData.getValue(3, 0)),
+                        value: Number(myData.getValue(3, 2)).toFixed(1),
+                        numberSuffix: " pct."
+                    });
+                    myKpiObjectName2.addKPI("KpiYd5_2", {
+                        caption: String(myData.getValue(4, 0)),
+                        value: Number(myData.getValue(4, 2))
+                        // numberSuffix: " pct."
+                    });
+                    myKpiObjectName2.addKPI("KpiYd6_2", {
+                        caption: String(myData.getValue(5, 0)),
+                        value: Number(myData.getValue(5, 2).toFixed(1)),
+                        numberSuffix: " pct."
+                    });
+                    myKpiObjectName2.addKPI("KpiYd7_2", {
+                        caption: String(myData.getValue(6, 0)),
+                        value: Number(myData.getValue(6, 2)).toFixed(1),
+                        numberDecimalPoints: 1,
+                        numberSuffix: " pct."
+                    });
+                    myKpiObjectName2.addKPI("KpiYd8_2", {
+                        caption: String(myData.getValue(7, 0)),
+                        value: Number(myData.getValue(7, 2)).toFixed(1),
+                        numberDecimalPoints: 1,
+                        numberSuffix: " pct."
+                    });
                     // Don't forget to call unlock or the data won't be displayed
                     myKpiObjectName.unlock();
                     myKpiObjectName.setCaption("Nøgletal");// + numberLabels.toLowerCase());
 
+                    myKpiObjectName2.unlock();
+                    myKpiObjectName2.setCaption("Nøgletal");// + numberLabels.toLowerCase());
+
                     addTooltip({
                         kpiId: "KpiYd1_2",
-                        dateInput: dateInput1,
+                        dateInput: String(myData.getValue(0, 1)),
                         prefix: "Fuldtidspersoner "
                     });
 
                     addTooltip({
                         kpiId: "KpiYd2_2",
-                        dateInput: dateInput2,
-                        prefix: "Andel "
+                        dateInput: String(myData.getValue(1, 1)),
+                        prefix: "Andel af arbejdsstyrken "
                     });
 
                     addTooltip({
                         kpiId: "KpiYd3_2",
-                        dateInput: dateInput3,
-                        prefix: "Andel "
+                        dateInput: String(myData.getValue(2, 1)),
+                        prefix: "Andel af arbejdsstyrken "
+                    });
+
+                    addTooltip({
+                        kpiId: "KpiYd4_2",
+                        dateInput: String(myData.getValue(3, 1)),
+                        prefix: "Andel af arbejdsstyrken "
+                    });
+
+                    addTooltip({
+                        kpiId: "KpiYd5_2",
+                        dateInput: String(myData.getValue(4, 1)),
+                        prefix: "Fuldtidspersoner "
+                    });
+
+                    addTooltip({
+                        kpiId: "KpiYd6_2",
+                        dateInput: String(myData.getValue(5, 1)),
+                        prefix: "Andel af arbejdsstyrken "
+                    });
+                    addTooltip({
+                        kpiId: "KpiYd7_2",
+                        dateInput: String(myData.getValue(6, 1)),
+                        prefix: "Andel af arbejdsstyrken "
+                    });
+                    addTooltip({
+                        kpiId: "KpiYd8_2",
+                        dateInput: String(myData.getValue(7, 1)),
+                        prefix: "Andel af arbejdsstyrken "
                     });
 
                 });
 
             }
 
+
             initialize();
+
         }
 
         function addMyDrillDownChart2(options) {
@@ -1190,18 +1229,31 @@
 
         ////// ---------------------------------------------------------------------
 
-        addMyKpi2("Kpi2", "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw");
+        addMyDoubleKpi2("Kpi2", "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw");
 
         addMyUniChart2({
             myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
             mySheet: "Unge UDV",
-            myQuery: "select B,C,D WHERE A='Tael' OR A<=12 ORDER BY A desc",
+            myQuery: "select B,AQ,AR,AS WHERE A='Tael' OR A<=12 ORDER BY A desc",
             myChartWidth: 6,
             myChartHeight: 4,
             isStacked: false,
             myShowLegend: true,
             myChartType: "line",
             myChartName: "chart2_1",
+            myCaption: "Andel af arbejdsstyrken"
+        });
+
+        addMyUniChart2({
+            myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
+            mySheet: "Unge UDV",
+            myQuery: "select B,C,D,E WHERE A='Tael' OR A<=12 ORDER BY A desc",
+            myChartWidth: 6,
+            myChartHeight: 4,
+            isStacked: false,
+            myShowLegend: true,
+            myChartType: "line",
+            myChartName: "chart2_2",
             myCaption: "Andel af arbejdsstyrken"
         });
         // addMyUniChart2({
@@ -1219,13 +1271,13 @@
         addMyUniChart2({
             myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
             mySheet: "Unge UDV",
-            myQuery: "select E,F,J,AF,AG,AH,AI,AJ,AK,AL,AN, F+J+AF+AG+AH+AI+AJ+AK+AL+AN WHERE A='Tael' OR A<=12 ORDER BY A desc label F+J+AF+AG+AH+AI+AJ+AK+AL+AN 'Total'",
+            myQuery: "select F,G,K,AG,AH,AI,AJ,AK,AL,AM,AO, G+K+AG+AH+AI+AJ+AK+AL+AM+AO WHERE A='Tael' OR A<=12 ORDER BY A desc label G+K+AG+AH+AI+AJ+AK+AL+AM+AO 'Total'",
             myChartWidth: 6,
             myChartHeight: 4,
             isStacked: true,
             myShowLegend: true,
             myChartType: "area",
-            myChartName: "chart2_2",
+            myChartName: "chart2_3",
             myCaption: "Fuldtidspersoner"
         });
 
@@ -1236,15 +1288,6 @@
             mySelect: "select B,C, D,E, F,G, H,I, J,K, L,M WHERE A=0 label B 'Dato', C 'Tilgang - forsikrede', D 'Dato', E 'Afgang - forsikrede', F 'Dato', G 'Tilgang - udd.hjælp - udd.parate', H 'Dato', I 'Afgang - udd.hjælp -udd.parate', J 'Dato', K 'Tilgang - udd.hjælp - aktivitetsparate', L 'Date', M 'Afgang - udd.hjælp - aktivitetsparate'",
             myChartName: "chart2_4",
             myCaption: "Antal påbegyndte og afsluttede forløb"
-        });
-        
-        addMyDrillDownChart3({
-            myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
-            mySheet: "Unge Afgang varighed",
-            mySheetDrill: "UNGE Afgang varighed UDV",
-            mySelect: "select B, C,D,E,F,G,H,I WHERE A=0",
-            myChartName: "chart2_5",
-            myCaption: "Antal afsluttede forløb fordelt på varighed"
         });
 
         // -----------------------------------------------------------------------------------------------------------
