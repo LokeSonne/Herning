@@ -1213,10 +1213,31 @@
                             seriesColor: '#FFED0D'
                         });
                     }
-                    if (myNumberOfDataColumns >= 11) {
+                    if (myNumberOfDataColumns >= 11 && arrayHeadings[10] == "Total") {
                         myChartName.addSeries("deakljoi11", arrayHeadings[10], arrayInput["arrayInput11"], {
                             seriesStacked: isStacked,
                             seriesDisplayType: 'line',
+                            seriesColor: '#151132'
+                        });
+                    }
+                    else if (myNumberOfDataColumns >= 11) {
+                        myChartName.addSeries("deakljoi11", arrayHeadings[10], arrayInput["arrayInput11"], {
+                            seriesStacked: isStacked,
+                            seriesDisplayType: myChartType,
+                            seriesColor: '#151132'
+                        });
+                    }
+                    if (myNumberOfDataColumns >= 12 && arrayHeadings[11] == "Total") {
+                        myChartName.addSeries("deakljoi12", arrayHeadings[11], arrayInput["arrayInput12"], {
+                            seriesStacked: isStacked,
+                            seriesDisplayType: 'line',
+                            seriesColor: '#151132'
+                        });
+                    }
+                    else if (myNumberOfDataColumns >= 12) {
+                        myChartName.addSeries("deakljoi12", arrayHeadings[11], arrayInput["arrayInput12"], {
+                            seriesStacked: isStacked,
+                            seriesDisplayType: myChartType,
                             seriesColor: '#151132'
                         });
                     }
@@ -1256,18 +1277,18 @@
             myChartName: "chart2_2",
             myCaption: "Andel af arbejdsstyrken"
         });
-        // addMyUniChart2({
-        //     myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
-        //     mySheet: "Unge UDV",
-        //     myQuery: "select Z,AA,AC,AE WHERE A='Tael' OR A<=12 ORDER BY A desc",
-        //     myChartWidth: 6,
-        //     myChartHeight: 4,
-        //     isStacked: false,
-        //     myShowLegend: true,
-        //     myChartType: "line",
-        //     myChartName: "chart2_3",
-        //     myCaption: "Udvikling i årsmål"
-        // });
+        addMyUniChart2({
+            myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
+            mySheet: "Ungeledighed",
+            myQuery: "select AA, AB,AC,AD,AE,AF,AG,AH,AI,AJ,AK,AL  WHERE AN='Tael' OR AN=1 ORDER BY AN desc",
+            myChartWidth: 12,
+            myChartHeight: 4,
+            isStacked: true,
+            myShowLegend: true,
+            myChartType: "column",
+            myChartName: "chart2_3",
+            myCaption: "Andel af arbejdsstyrken"
+        });
         addMyUniChart2({
             myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
             mySheet: "Unge UDV",
@@ -1277,7 +1298,7 @@
             isStacked: true,
             myShowLegend: true,
             myChartType: "area",
-            myChartName: "chart2_3",
+            myChartName: "chart2_4",
             myCaption: "Fuldtidspersoner"
         });
 
@@ -1286,7 +1307,7 @@
             mySheet: "TA UNGE",
             mySheetDrill: "TA UNGE UDV",
             mySelect: "select B,C, D,E, F,G, H,I, J,K, L,M WHERE A=0 label B 'Dato', C 'Tilgang - forsikrede', D 'Dato', E 'Afgang - forsikrede', F 'Dato', G 'Tilgang - udd.hjælp - udd.parate', H 'Dato', I 'Afgang - udd.hjælp -udd.parate', J 'Dato', K 'Tilgang - udd.hjælp - aktivitetsparate', L 'Date', M 'Afgang - udd.hjælp - aktivitetsparate'",
-            myChartName: "chart2_4",
+            myChartName: "chart2_5",
             myCaption: "Antal påbegyndte og afsluttede forløb"
         });
 
