@@ -1255,7 +1255,7 @@
         addMyUniChart2({
             myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
             mySheet: "Unge UDV",
-            myQuery: "select B,AQ,AR,AS WHERE A='Tael' OR A<=12 ORDER BY A desc",
+            myQuery: "select B,AQ,AS,AR WHERE A='Tael' OR A<=12 ORDER BY A desc",
             myChartWidth: 6,
             myChartHeight: 4,
             isStacked: false,
@@ -1268,7 +1268,7 @@
         addMyUniChart2({
             myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
             mySheet: "Unge UDV",
-            myQuery: "select B,C,D,E WHERE A='Tael' OR A<=12 ORDER BY A desc",
+            myQuery: "select B,C,E,D WHERE A='Tael' OR A<=12 ORDER BY A desc",
             myChartWidth: 6,
             myChartHeight: 4,
             isStacked: false,
