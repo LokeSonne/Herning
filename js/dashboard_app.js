@@ -1262,7 +1262,7 @@
             myShowLegend: true,
             myChartType: "line",
             myChartName: "chart2_1",
-            myCaption: "Andel af arbejdsstyrken"
+            myCaption: "Unge offentligt forsørgede (andel af AS)"
         });
 
         addMyUniChart2({
@@ -1275,7 +1275,7 @@
             myShowLegend: true,
             myChartType: "line",
             myChartName: "chart2_2",
-            myCaption: "Andel af arbejdsstyrken"
+            myCaption: "Unge ledige (andel af AS)"
         });
         addMyUniChart2({
             myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
@@ -1287,7 +1287,7 @@
             myShowLegend: true,
             myChartType: "column",
             myChartName: "chart2_3",
-            myCaption: "Andel af arbejdsstyrken"
+            myCaption: "Unge offentligt forsørgede (andel af AS) - fordelt på sagstyper"
         });
         addMyUniChart2({
             myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
