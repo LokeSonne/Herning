@@ -1369,6 +1369,14 @@
                         numberDecimalPoints: 1,
                         numberSuffix: " pct."
                     });
+                    myKpiObjectName.addKPI("KpiYd4_3", {
+                        caption: String(myData.getValue(3, 0)),
+                        value: Number(myData.getValue(3, 2)),
+                    });
+                    myKpiObjectName.addKPI("KpiYd5_3", {
+                        caption: String(myData.getValue(4, 0)),
+                        value: Number(myData.getValue(4, 2)),
+                    });
 
                     // Don't forget to call unlock or the data won't be displayed
                     myKpiObjectName.unlock();
@@ -1390,6 +1398,16 @@
                         kpiId: "KpiYd3_3",
                         dateInput: String(myData.getValue(2, 1)),
                         prefix: "Andel af arbejdsstyrken "
+                    });
+                    addTooltip({
+                        kpiId: "KpiYd4_3",
+                        dateInput: String(myData.getValue(0, 1)),
+                        prefix: "Fuldtidspersoner "
+                    });
+                    addTooltip({
+                        kpiId: "KpiYd5_3",
+                        dateInput: String(myData.getValue(0, 1)),
+                        prefix: "Fuldtidspersoner "
                     });
 
                 });
@@ -1508,21 +1526,21 @@
         addMyUniChart3({
             myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
             mySheet: "Integrationsydelse UDV",
-            myQuery: "select F,H,I,J,K,L,G WHERE A='Tael' OR A<=12 ORDER BY A desc label G 'Total'",
-            myChartWidth: 4,
+            myQuery: "select M,P,Q,R WHERE A='Tael' OR A<=12 ORDER BY A desc",
+            myChartWidth: 12,
             myChartHeight: 4,
-            isStacked: true,
+            isStacked: false,
             myShowLegend: true,
-            myChartType: "area",
+            myChartType: "line",
             myChartName: "chart3_1",
-            myCaption: "Antal personer"
+            myCaption: "Andel af IY-modtagere omfattet integrationsprogrammet, der er jobparate"
         });
 
         addMyUniChart3({
             myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
             mySheet: "Integrationsydelse UDV",
             myQuery: "select M,N,O WHERE A='Tael' OR A<=12 ORDER BY A desc",
-            myChartWidth: 4,
+            myChartWidth: 6,
             myChartHeight: 4,
             isStacked: true,
             myShowLegend: true,
@@ -1535,7 +1553,7 @@
             myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
             mySheet: "grund_nyfremtid_antal",
             myQuery: "select A,B",
-            myChartWidth: 4,
+            myChartWidth: 6,
             myChartHeight: 4,
             isStacked: false,
             myShowLegend: true,
