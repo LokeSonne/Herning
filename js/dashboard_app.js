@@ -1264,24 +1264,11 @@
             myChartName: "chart2_1",
             myCaption: "Unge offentligt forsørgede (andel af AS)"
         });
-
-        addMyUniChart2({
-            myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
-            mySheet: "Unge UDV",
-            myQuery: "select B,C,E,D WHERE A='Tael' OR A<=12 ORDER BY A desc",
-            myChartWidth: 6,
-            myChartHeight: 4,
-            isStacked: false,
-            myShowLegend: true,
-            myChartType: "line",
-            myChartName: "chart2_2",
-            myCaption: "Unge ledige (andel af AS)"
-        });
         addMyUniChart2({
             myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
             mySheet: "Ungeledighed",
             myQuery: "select AA, AB,AC,AD,AE,AF,AG,AH,AI,AJ,AK,AL  WHERE AN='Tael' OR AN=1 ORDER BY AN desc",
-            myChartWidth: 12,
+            myChartWidth: 6,
             myChartHeight: 4,
             isStacked: true,
             myShowLegend: true,
@@ -1292,7 +1279,7 @@
         addMyUniChart2({
             myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
             mySheet: "Unge UDV",
-            myQuery: "select F,G,K,AG,AH,AI,AJ,AK,AL,AM,AO, G+K+AG+AH+AI+AJ+AK+AL+AM+AO WHERE A='Tael' OR A<=12 ORDER BY A desc label G+K+AG+AH+AI+AJ+AK+AL+AM+AO 'Total'",
+            myQuery: "select F,G,H,I,M,O,Q,S,U,W,Y, G+H+I+M+O+Q+S+U+W+Y WHERE A='Tael' OR A<=12 ORDER BY A desc label G+H+I+M+O+Q+S+U+W+Y 'Total'",
             myChartWidth: 6,
             myChartHeight: 4,
             isStacked: true,
@@ -1523,44 +1510,44 @@
 
         addMyKpi3("Kpi3", "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw");
 
+        // addMyUniChart3({
+        //     myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
+        //     mySheet: "Integrationsydelse UDV",
+        //     myQuery: "select M,P,Q,R WHERE A='Tael' OR A<=12 ORDER BY A desc",
+        //     myChartWidth: 12,
+        //     myChartHeight: 4,
+        //     isStacked: false,
+        //     myShowLegend: true,
+        //     myChartType: "line",
+        //     myChartName: "chart3_1",
+        //     myCaption: "Andel af IY-modtagere omfattet integrationsprogrammet, der er jobparate"
+        // });
+
         addMyUniChart3({
             myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
-            mySheet: "Integrationsydelse UDV",
-            myQuery: "select M,P,Q,R WHERE A='Tael' OR A<=12 ORDER BY A desc",
-            myChartWidth: 12,
+            mySheet: "Beskæftigelse for flygninge UDV",
+            myQuery: "select B,C,D,E WHERE A='Tael' OR A<=12 ORDER BY A desc",
+            myChartWidth: 6,
             myChartHeight: 4,
             isStacked: false,
             myShowLegend: true,
             myChartType: "line",
             myChartName: "chart3_1",
-            myCaption: "Andel af IY-modtagere omfattet integrationsprogrammet, der er jobparate"
+            myCaption: "Andel beskæft. flygtninge og fam. til flygtninge i måneden, pct."
         });
 
         addMyUniChart3({
             myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
             mySheet: "Integrationsydelse UDV",
-            myQuery: "select M,N,O WHERE A='Tael' OR A<=12 ORDER BY A desc",
+            myQuery: "select M,S,T WHERE A='Tael' OR A<=12 ORDER BY A desc",
             myChartWidth: 6,
             myChartHeight: 4,
             isStacked: true,
             myShowLegend: true,
             myChartType: "area",
             myChartName: "chart3_2",
-            myCaption: "Aktiverede"
-        });
-
-        addMyUniChart3({
-            myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
-            mySheet: "grund_nyfremtid_antal",
-            myQuery: "select A,B",
-            myChartWidth: 6,
-            myChartHeight: 4,
-            isStacked: false,
-            myShowLegend: true,
-            myChartType: "column",
-            myChartName: "chart3_3",
-            myCaption: "Ny fremtid: Deltagere"
-        });        
+            myCaption: "Andel i praktik og løntilskud blandt modtagere af integrationsydelse"
+        });    
 
         // -----------------------------------------------------------------------------------------------------------
         // -----------------------Dashboard 4-------------------------------------------------------------------------
