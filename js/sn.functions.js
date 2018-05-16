@@ -485,7 +485,70 @@ function addMyDrillDownChartLayer(options) {
     initialize();
 }
 
+function addMyKpi(options) {
+    var kpiObjectName = options.kpiObjectName;
+    var key = options.key;
+    var kpiIdPrefix = options.kpiIdPrefix;
+    var db = options.db;
+    var subject = options.subject;
+    var queryString = "select C,D,E,N,O WHERE B=\'" + subject + "\'";
 
+    kpiObjectName = new KPIGroupComponent();
+    key = String(key);
+    kpiObjectName.setDimensions(12, 2);
+    kpiObjectName.lock();
+    db.addComponent(kpiObjectName);
+
+    function initialize() {
+        // The URL of the spreadsheet to source data from.
+        var query = new google.visualization.Query("https://docs.google.com/spreadsheets/d/" + key + "/gviz/tq?sheet=KPI");
+        query.setQuery(String(queryString));
+        query.send(function processResponse(response) {
+
+            var data = response.getDataTable();
+            var numberOfDataRows = data.getNumberOfRows(0) - 1;
+
+            for (var i = 0; i <= numberOfDataRows; i++) {
+                var kpiId = kpiIdPrefix + i;
+                var kpiOptions = {
+                    caption: String(data.getValue(i, 0)),
+                    value: Number(data.getValue(i, 2)),
+                    numberDecimalPoints: 0,
+                    numberSuffix: ""
+                }
+                if (data.getValue(i, 3)) {
+                    kpiOptions.numberSuffix = " " + String(data.getValue(i, 3))
+                }
+                if (data.getValue(i, 3) && data.getValue(i, 3) === "pct.") {
+                    kpiOptions.value.toFixed(1);
+                    kpiOptions.numberDecimalPoints = 1;
+                }
+                kpiObjectName.addKPI(kpiId, kpiOptions);
+            }
+
+            // Don't forget to call unlock or the data won't be displayed
+            kpiObjectName.unlock();
+            kpiObjectName.setCaption("Nøgletal");// + numberLabels.toLowerCase());
+
+            for (var i = 0; i <= numberOfDataRows; i++) {
+                var kpiId = kpiIdPrefix + i;
+                var tooltipOptions = {
+                    kpiId: kpiId,
+                    dateInput: String(data.getValue(i, 1)),
+                    prefix: ""
+                }
+                if (data.getValue(i, 4)) {
+                    tooltipOptions.prefix = String(data.getValue(i, 4)) + " ";
+                }
+                addTooltip(tooltipOptions);
+            }
+
+        });
+
+    }
+
+    initialize();
+}
 
     //function addMyDrillDownChart(options) {
     //    var myKey = options.myKey
