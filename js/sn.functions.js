@@ -110,7 +110,7 @@ function addMyKpi(options) {
     var kpiIdPrefix = options.kpiIdPrefix;
     var db = options.db;
     var subject = options.subject;
-    var queryString = "select C,D,E,N,O WHERE B=\'" + subject + "\'";
+    var queryString = "select C,D,E,N,O,P WHERE B=\'" + subject + "\'";
 
     kpiObjectName = new KPIGroupComponent();
     key = String(key);
@@ -138,9 +138,10 @@ function addMyKpi(options) {
                 if (data.getValue(i, 3)) {
                     kpiOptions.numberSuffix = " " + String(data.getValue(i, 3))
                 }
-                if (data.getValue(i, 3) && data.getValue(i, 3) === "pct.") {
-                    kpiOptions.value.toFixed(1);
-                    kpiOptions.numberDecimalPoints = 1;
+                if (data.getValue(i, 5)) {
+                    var decimalPoints = data.getValue(i, 5);
+                    kpiOptions.value.toFixed(decimalPoints);
+                    kpiOptions.numberDecimalPoints = decimalPoints;
                 }
                 kpiObjectName.addKPI(kpiId, kpiOptions);
             }
