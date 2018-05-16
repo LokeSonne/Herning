@@ -1133,7 +1133,7 @@ function addMyUniChart(myOptions) {
         // -----------------------Dashboard 4-------------------------------------------------------------------------
         // -----------------------------------------------------------------------------------------------------------
         var db4 = new Dashboard();
-        db4.setDashboardTitle("Balancen på arbejdsmarkedet");
+        db4.setDashboardTitle("Rekruttering og fastholdelse");
 
         addMyKpi({
             kpiObjectName: "Kpi4",
@@ -1146,6 +1146,21 @@ function addMyUniChart(myOptions) {
         addMyUniChart({
             db: db4,
             myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
+            mySheet: "Besk UDV",
+            myQuery: "select B,D,C WHERE A='Tael' OR A<=12 ORDER BY A desc",
+            myChartWidth: 6,
+            myChartHeight: 4,
+            isStacked: false,
+            myShowLegend: true,
+            myChartType: "line",
+            myChartName: "chart4_1",
+            myCaption: "Lønmodtagere efter bopæl og arbejdssted",
+            myNumberDecimalPoints: 1
+        });
+
+        addMyUniChart({
+            db: db4,
+            myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
             mySheet: "Balance UDV",
             myQuery: "select B,D,C WHERE A='Tael' OR A<=12 ORDER BY A desc",
             myChartWidth: 6,
@@ -1153,7 +1168,7 @@ function addMyUniChart(myOptions) {
             isStacked: false,
             myShowLegend: false,
             myChartType: "line",
-            myChartName: "chart4_1",
+            myChartName: "chart4_2",
             myCaption: "Beskæftigelsesfrekvens",
             myNumberDecimalPoints: 1
         });
@@ -1167,35 +1182,9 @@ function addMyUniChart(myOptions) {
             isStacked: false,
             myShowLegend: true,
             myChartType: "line",
-            myChartName: "chart4_2",
+            myChartName: "chart4_3",
             myCaption: "Jobomsætning",
             myNumberDecimalPoints: 1
-        });
-        addMyUniChart({
-            db: db4,
-            myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
-            mySheet: "Balance UDV",
-            myQuery: "select I, J WHERE I IS NOT NULL ORDER BY I",
-            myChartWidth: 6,
-            myChartHeight: 4,
-            isStacked: false,
-            myShowLegend: false,
-            myChartType: "column",
-            myChartName: "chart4_3",
-            myCaption: "Nyoprettede stillinger fordelt på brancher"
-        });
-        addMyUniChart({
-            db: db4,
-            myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
-            mySheet: "Balance UDV",
-            myQuery: "select K, L WHERE K IS NOT NULL ORDER BY K",
-            myChartWidth: 6,
-            myChartHeight: 4,
-            isStacked: false,
-            myShowLegend: false,
-            myChartType: "column",
-            myChartName: "chart4_4",
-            myCaption: "Antal arbejdspladser fordelt på brancher"
         });
 
         // -----------------------------------------------------------------------------------------------------------
@@ -1209,64 +1198,50 @@ function addMyUniChart(myOptions) {
             key: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
             kpiIdPrefix: "kpi5",
             db: db5,
-            subject: "Balance"
+            subject: "Borgere på kanten"
         });
 
         addMyUniChart({
             db: db5,
             myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
-            mySheet: "Balance UDV",
-            myQuery: "select B,D,C WHERE A='Tael' OR A<=12 ORDER BY A desc",
-            myChartWidth: 6,
-            myChartHeight: 4,
-            isStacked: false,
-            myShowLegend: false,
-            myChartType: "line",
-            myChartName: "chart4_1",
-            myCaption: "Beskæftigelsesfrekvens",
-            myNumberDecimalPoints: 1
-        });
-        addMyUniChart({
-            db: db5,
-            myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
-            mySheet: "Balance UDV",
-            myQuery: "select E, G, F WHERE A='Tael' OR A<=12 ORDER BY A desc",
+            mySheet: "Kontanthjaelp og uddannelseshjaelp UDV",
+            myQuery: "select AM,AO,AP WHERE A='Tael' OR A<=12 ORDER BY A desc",
             myChartWidth: 6,
             myChartHeight: 4,
             isStacked: false,
             myShowLegend: true,
             myChartType: "line",
-            myChartName: "chart4_2",
-            myCaption: "Jobomsætning",
+            myChartName: "chart5_1",
+            myCaption: "Andel jobparate kontanthjælpsmodtagere med løntimer",
             myNumberDecimalPoints: 1
         });
         addMyUniChart({
-            db: db4,
+            db: db5,
             myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
-            mySheet: "Balance UDV",
-            myQuery: "select I, J WHERE I IS NOT NULL ORDER BY I",
+            mySheet: "Kontanthjaelp og uddannelseshjaelp UDV",
+            myQuery: "select B,C WHERE A='Tael' OR A<=12 ORDER BY A desc",
             myChartWidth: 6,
             myChartHeight: 4,
             isStacked: false,
             myShowLegend: false,
-            myChartType: "column",
-            myChartName: "chart4_3",
-            myCaption: "Nyoprettede stillinger fordelt på brancher"
-        });
-        addMyUniChart({
-            db: db4,
-            myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
-            mySheet: "Balance UDV",
-            myQuery: "select K, L WHERE K IS NOT NULL ORDER BY K",
-            myChartWidth: 6,
-            myChartHeight: 4,
-            isStacked: false,
-            myShowLegend: false,
-            myChartType: "column",
-            myChartName: "chart4_4",
-            myCaption: "Antal arbejdspladser fordelt på brancher"
+            myChartType: "line",
+            myChartName: "chart5_2",
+            myCaption: "Antal jobparate kontanthjælpsmodtagere",
         });
 
+        addMyUniChart({
+            db: db5,
+            myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
+            mySheet: "UDV AFGANG",
+            myQuery: "select X,Y WHERE A='Tael' OR A<=12 ORDER BY A desc",
+            myChartWidth: 6,
+            myChartHeight: 4,
+            isStacked: false,
+            myShowLegend: false,
+            myChartType: "line",
+            myChartName: "chart5_3",
+            myCaption: "Antal afsluttede jobparate kontanthjælpsmodtagere",
+        });
 
         tdb.addDashboardTab(db, {
             title: "Oversigt",
