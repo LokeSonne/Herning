@@ -1,5 +1,4 @@
 ﻿rf.StandaloneDashboard(function (db) {
-    //db.setDashboardTitle('Herning: Forsikrede ledige og arbejdsmarkedsydelse');
 
     addMyKpi({
         kpiObjectName: "Kpi1",
@@ -22,18 +21,6 @@
         myChartName: "chart1_1",
         myCaption: "Antal fuldtidspersoner"
     });
-    //addMyUniChart({
-    //    myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
-    //    mySheet: "Ressourceforløb og revalidering UDV",
-    //    myQuery: "select F,G,H,I,J,K,L,M WHERE A='Tael' OR A<=12 ORDER BY A desc",
-    //    myChartWidth: 6,
-    //    myChartHeight: 3,
-    //    isStacked: true,
-    //    myShowLegend: true,
-    //    myChartType: "column",
-    //    myChartName: "chart1_2",
-    //    myCaption: "Antal afsluttede revalideringsforløb"
-    //});
 
     addMyUniChart({
         db: db,

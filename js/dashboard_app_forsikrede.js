@@ -1,8 +1,4 @@
 ﻿rf.StandaloneDashboard(function(db){
-    //db.setDashboardTitle('Herning: Forsikrede ledige og arbejdsmarkedsydelse');
-
-	// Sætter parametre for dataudtræk og kører funktioner
-	// addMyKpi("Kpi1", "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw");
 
 	addMyKpi({
 		kpiObjectName: "Kpi1",

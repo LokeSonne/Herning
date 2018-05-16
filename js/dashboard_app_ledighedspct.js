@@ -1,5 +1,4 @@
 ﻿rf.StandaloneDashboard(function(db){
-    //db.setDashboardTitle('Herning: Forsikrede ledige og arbejdsmarkedsydelse');
 
     addMyKpi({
         kpiObjectName: "Kpi1",
@@ -22,9 +21,8 @@
 	    myChartName: "chart1_1",
 	    myCaption: "Andel af arbejdsstyrken",
 	    myNumberDecimalPoints: 1
-	});
-
-
+    });
+    
 });
 
 

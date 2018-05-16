@@ -1,5 +1,4 @@
 ﻿rf.StandaloneDashboard(function(db){
-	// Sætter parametre for dataudtræk og kører funktioner
 
     addMyKpi({
         kpiObjectName: "Kpi1",

@@ -1,6 +1,5 @@
 ﻿rf.StandaloneDashboard(function(db){
-	
-    // Sætter parametre for dataudtræk og kører funktioner
+
 	addMyKpi({
 		kpiObjectName: "Kpi1",
 		key: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
@@ -22,7 +21,7 @@
 	    myChartName: "chart1_1",
 	    myCaption: "Antal personer"
 	});
-
+	
 	addMyUniChart({
 		db: db,
 	    myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
@@ -69,6 +68,7 @@
 	    myCaption: "Andel af arbejdsstyrken",
 	    myNumberDecimalPoints: 1
 	});
+
 	addMyUniChart({
 		db: db,
 	    myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",

@@ -799,8 +799,7 @@ function addMyDrillDownChart3(options) {
         // -----------------------------------------------------------------------------------------------------------
         var db = new Dashboard();
         db.setDashboardTitle("Table In Razorfow");
-    
-        // Sætter parametre for dataudtræk og kører funktioner
+
         addMyDoubleKpi("Kpi2", "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",db);
 
         addMyUniChart({
@@ -836,7 +835,6 @@ function addMyDrillDownChart3(options) {
             myChartName: "chart1_3",
             myCaption: "Antal afsluttede forløb"
         });
-	
         // -----------------------------------------------------------------------------------------------------------
         // -----------------------Dashboard 2-------------------------------------------------------------------------
         // -----------------------------------------------------------------------------------------------------------
@@ -891,43 +889,11 @@ function addMyDrillDownChart3(options) {
             myChartName: "chart2_4",
             myCaption: "Fuldtidspersoner"
         });
-
-        // addMyDrillDownChart2({
-        //     db: db2,
-        //     myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
-        //     mySheet: "TA UNGE",
-        //     mySheetDrill: "TA UNGE UDV",
-        //     mySelect: "select B,C, D,E, F,G, H,I, J,K, L,M WHERE A=0 label B 'Dato', C 'Tilgang - forsikrede', D 'Dato', E 'Afgang - forsikrede', F 'Dato', G 'Tilgang - udd.hjælp - udd.parate', H 'Dato', I 'Afgang - udd.hjælp -udd.parate', J 'Dato', K 'Tilgang - udd.hjælp - aktivitetsparate', L 'Date', M 'Afgang - udd.hjælp - aktivitetsparate'",
-        //     myChartName: "chart2_5",
-        //     myCaption: "Antal påbegyndte og afsluttede forløb"
-        // });
-
         // -----------------------------------------------------------------------------------------------------------
         // -----------------------Dashboard 3-------------------------------------------------------------------------
         // -----------------------------------------------------------------------------------------------------------
         var db3 = new Dashboard();
         db3.setDashboardTitle("Integration");
-
-        // function addMyLinkKpi(y) {
-        //     var kpi = new KPIGroupComponent();
-        //     kpi.setDimensions(12, 2);
-        //     kpi.setCaption('Rapport om integration');
-        //     kpi.addKPI('december', {
-        //         caption: 'December 2016 - klik for at åbne rapport',
-        //         value: 0
-        //     });
-        //     kpi.setKPIValueColor('december', '#fff');
-        //     db3.addComponent(kpi);
-        //     kpi.lock();
-        //     $('#dbTarget').on('click', '#december', function (e) {
-        //         e.stopPropagation();
-        //         window.open("http://www.herning.dk/media/14638057/noegletal-integration-december-2016.pdf");
-        //         return false;
-        //     });
-        //     kpi.unlock();
-    
-        // }
-        // addMyLinkKpi();
 
         addMyKpi({
             kpiObjectName: "Kpi3",
@@ -936,19 +902,6 @@ function addMyDrillDownChart3(options) {
             db: db3,
             subject: "Integration"
         });
-
-        // addMyUniChart3({
-        //     myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
-        //     mySheet: "Integrationsydelse UDV",
-        //     myQuery: "select M,P,Q,R WHERE A='Tael' OR A<=12 ORDER BY A desc",
-        //     myChartWidth: 12,
-        //     myChartHeight: 4,
-        //     isStacked: false,
-        //     myShowLegend: true,
-        //     myChartType: "line",
-        //     myChartName: "chart3_1",
-        //     myCaption: "Andel af IY-modtagere omfattet integrationsprogrammet, der er jobparate"
-        // });
 
         addMyUniChart({
             db: db3,
@@ -976,8 +929,7 @@ function addMyDrillDownChart3(options) {
             myChartType: "area",
             myChartName: "chart3_2",
             myCaption: "Andel i praktik og løntilskud blandt modtagere af integrationsydelse"
-        });    
-
+        });
         // -----------------------------------------------------------------------------------------------------------
         // -----------------------Dashboard 4-------------------------------------------------------------------------
         // -----------------------------------------------------------------------------------------------------------
