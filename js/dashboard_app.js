@@ -348,7 +348,7 @@ function addMyDrillDownChart1(options) {
     //google.setOnLoadCallback(initialize);
     myChartName.addDrillStep(function (done, params) {
         var myWhereCond = "\"" + params.label + "\"";
-        var columnNam = "";
+        var columnName = "";
         if (params.label === "Forsikrede") {
             columnName = "B,C";
         }
