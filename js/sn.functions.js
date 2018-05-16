@@ -27,28 +27,25 @@
 // addMyUniChart er en function, der viser et chart. Den er paremtriseret, så den kan anvendes til de fleste charts
 // - dog ikke med drillstep eller pie-charts. For at fungere skal den query, der henter data fra Spreadsheet have 
 // kategoriaksen som første element.
-// OBS - virker kun hvis funktionen Dashboard har navnet "db"
-function addMyUniChart(options) {
-    var myChartType = options.myChartType || 'line'
-    var isStacked = options.isStacked || false
-    var myChartHeight = options.myChartHeight || 4
-    var myChartWidth = options.myChartWidth || 4
-    var myKey = options.myKey
-    var mySheet = options.mySheet
-    var myQuery = options.myQuery
-    var myChartName = options.myChartName
-    var myCaption = options.myCaption
-    var myShowLegend = options.myShowLegend || true
-    var myShowTotal = options.stackedTotalDisplay || false
-    var myNumberDecimalPoints = options.myNumberDecimalPoints || 0
+function addMyUniChart(myOptions) {
+    var db = myOptions.db;
+    var myChartType = myOptions.myChartType || 'line';
+    var isStacked = myOptions.isStacked || false;
+    var myChartHeight = myOptions.myChartHeight || 4;
+    var myChartWidth = myOptions.myChartWidth || 4;
+    var myKey = myOptions.myKey;
+    var mySheet = myOptions.mySheet;
+    var myQuery = myOptions.myQuery;
+    var myChartName = myOptions.myChartName;
+    var myCaption = myOptions.myCaption;
+    var myShowLegend = myOptions.myShowLegend || true;
+    var seriesColorArray = myOptions.seriesColorArray || ['#5a9bd4', '#7ac36a', '#f15a60', '#faa65b', '#9e67ab', '#d77fb4', '#ce7058', '#6CDEC7', '#FFED0D', '#151132', '#FFED0D', '#151132']
+    var myNumberDecimalPoints = myOptions.myNumberDecimalPoints || 0;
 
-    var myChartName = new ChartComponent();
+    myChartName = new ChartComponent();
     myChartName.setCaption(myCaption);
     myChartName.setDimensions(myChartWidth, myChartHeight);
     myChartName.setOption('showLegendFlag', myShowLegend);
-    myChartName.setOption('numberThousandsSeparator', ".");
-    myChartName.setOption('numberDecimalSeparator', ",");
-    
     myChartName.lock();
     db.addComponent(myChartName);
     var whatId = myChartName.getID();
@@ -70,124 +67,36 @@ function addMyUniChart(options) {
             for (var x = 1; x <= myNumberOfDataColumns; x++) {
                 var arrayElement = "arrayInput" + x;
                 arrayInput[arrayElement] = [];
-                for (var e = 0; e < myNumberOfRows ; e++) {
+                for (var e = 0; e < myNumberOfRows; e++) {
                     arrayInput[arrayElement].push(myData.getValue(e, x).toFixed(myNumberDecimalPoints));
                 }
             }
 
-            for (var i = 0; i < myNumberOfRows ; i++) {
+            for (var i = 0; i < myNumberOfRows; i++) {
                 arrayLabels.push(myData.getValue(i, 0));
-            };
+            }
 
-            for (var h = 1; h <= myNumberOfDataColumns ; h++) {
+            for (var h = 1; h <= myNumberOfDataColumns; h++) {
                 arrayHeadings.push(myData.getColumnLabel(h));
-            };
-
+            }
 
             myChartName.setLabels(arrayLabels);
 
 
-            myChartName.addSeries("deakljoi1", arrayHeadings[0], arrayInput["arrayInput1"], {
-                //numberDecimalSeparator: ",",
-                //numberThousandsSeparator: ".",
-                seriesStacked: isStacked,
-                seriesDisplayType: myChartType
-            });
-
-            if (myNumberOfDataColumns >= 2) {
-                myChartName.addSeries("deakljoi2", arrayHeadings[1], arrayInput["arrayInput2"], {
-                    //numberDecimalSeparator: ",",
-                    //numberThousandsSeparator: ".",
-                    seriesStacked: isStacked,
-                    seriesDisplayType: myChartType
-                });
-            }
-
-            if (myNumberOfDataColumns >= 3) {
-                myChartName.addSeries("deakljoi3", arrayHeadings[2], arrayInput["arrayInput3"], {
-                    //numberDecimalSeparator: ",",
-                    //numberThousandsSeparator: ".",
-                    seriesStacked: isStacked,
-                    seriesDisplayType: myChartType
-                });
-            }
-
-            if (myNumberOfDataColumns >= 4) {
-                myChartName.addSeries("deakljoi4", arrayHeadings[3], arrayInput["arrayInput4"], {
-                    //numberDecimalSeparator: ",",
-                    //numberThousandsSeparator: ".",
-                    seriesStacked: isStacked,
-                    seriesDisplayType: myChartType
-                });
-            }
-            if (myNumberOfDataColumns >= 5) {
-                myChartName.addSeries("deakljoi5", arrayHeadings[4], arrayInput["arrayInput5"], {
-                    //numberDecimalSeparator: ",",
-                    //numberThousandsSeparator: ".",
-                    seriesStacked: isStacked,
-                    seriesDisplayType: myChartType
-                });
-            }
-            if (myNumberOfDataColumns >= 6) {
-                myChartName.addSeries("deakljoi6", arrayHeadings[5], arrayInput["arrayInput6"], {
-                    //numberDecimalSeparator: ",",
-                    //numberThousandsSeparator: ".",
+            for (var j = 1; j <= myNumberOfDataColumns; j++) {
+                var seriesName = "deakljoi" + j;
+                var arrayInputNumber = "arrayInput" + j;
+                var seriesOptions = {
                     seriesStacked: isStacked,
                     seriesDisplayType: myChartType,
-                    seriesColor: "#d77fb4"
-                });
+                    seriesColor: seriesColorArray[j - 1],
+                    numberDecimalPoints: 4
+                }
+                if (arrayHeadings[j - 1] === "Total") {
+                    seriesOptions.seriesDisplayType = 'line';
+                }
+                myChartName.addSeries(seriesName, arrayHeadings[j - 1], arrayInput[arrayInputNumber], seriesOptions);
             }
-            if (myNumberOfDataColumns >= 7) {
-                myChartName.addSeries("deakljoi7", arrayHeadings[6], arrayInput["arrayInput7"], {
-                    //numberDecimalSeparator: ",",
-                    //numberThousandsSeparator: ".",
-                    seriesStacked: isStacked,
-                    seriesDisplayType: myChartType,
-                    seriesColor: "#ce7058"
-                });
-            }
-            if (myNumberOfDataColumns >= 8) {
-                myChartName.addSeries("deakljoi8", arrayHeadings[7], arrayInput["arrayInput8"], {
-                    //numberDecimalSeparator: ",",
-                    //numberThousandsSeparator: ".",
-                    seriesStacked: isStacked,
-                    seriesDisplayType: myChartType,
-                    seriesColor: "#eeeeee"
-                });
-            }
-            if (myNumberOfDataColumns >= 9) {
-                myChartName.addSeries("deakljoi9", arrayHeadings[8], arrayInput["arrayInput9"], {
-                    //numberDecimalSeparator: ",",
-                    //numberThousandsSeparator: ".",
-                    seriesStacked: isStacked,
-                    seriesDisplayType: myChartType,
-                    seriesColor: '#6CDEC7'
-                });
-            }
-            if (myNumberOfDataColumns >= 10) {
-                myChartName.addSeries("deakljoi10", arrayHeadings[9], arrayInput["arrayInput10"], {
-                    //numberDecimalSeparator: ",",
-                    //numberThousandsSeparator: ".",
-                    seriesStacked: isStacked,
-                    seriesDisplayType: myChartType,
-                    seriesColor: '#dd542b'
-                });
-            }
-            if (myNumberOfDataColumns >= 11) {
-                myChartName.addSeries("deakljoi11", arrayHeadings[10], arrayInput["arrayInput11"], {
-                    //numberDecimalSeparator: ",",
-                    //numberThousandsSeparator: ".",
-                    seriesStacked: isStacked,
-                    seriesDisplayType: myChartType,
-                    seriesColor: '#a1968b'
-                });
-            }
-
-            //Options
-            if (isStacked == true) {
-                myChartName.setOption('stackedTotalDisplay', myShowTotal);
-            }
-
             // Don't forget to call unlock or the data won't be displayed
             myChartName.unlock();
         });

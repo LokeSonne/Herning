@@ -13,6 +13,7 @@
 	});
 
 	addMyUniChart({
+		db: db,
 	    myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
 	    mySheet: "Forsikrede Amydelse UDV",
 	    myQuery: "select B,C,E WHERE A='Tael' OR A<=12 ORDER BY A desc",
@@ -26,6 +27,7 @@
 	});
 
 	addMyUniChart({
+		db: db,
 	    myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
 	    mySheet: "Forsikrede Amydelse UDV",
 	    myQuery: "select F,G,H,I,J,K,L,M WHERE A='Tael' OR A<=12 ORDER BY A desc",
@@ -39,6 +41,7 @@
 	});
 
 	addMyUniChart({
+		db: db,
 	    myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
 	    mySheet: "Forsikrede Amydelse UDV",
 	    myQuery: "select O,P,Q,R WHERE A='Tael' OR A<=12 ORDER BY A desc",
