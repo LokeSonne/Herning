@@ -995,14 +995,6 @@ function addMyUniChart(myOptions) {
             subject: "Unge1"
         });
 
-        addMyKpi({
-            kpiObjectName: "Kpi22",
-            key: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
-            kpiIdPrefix: "kpi22",
-            db: db2,
-            subject: "Unge2"
-        });
-
         addMyUniChart({
             db: db2,
             myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
