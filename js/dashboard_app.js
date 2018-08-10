@@ -880,7 +880,7 @@ function addMyDrillDownChart3(options) {
             db: db2,
             myKey: "1DJ4sedvHHzhP60tlPILHYEEeiVADGGVArJPLVbTkzrw",
             mySheet: "Unge UDV",
-            myQuery: "select F,G,H,I,M,O,Q,S,U,W,Y, G+H+I+M+O+Q+S+U+W+Y WHERE A='Tael' OR A<=12 ORDER BY A desc label G+H+I+M+O+Q+S+U+W+Y 'Total'",
+            myQuery: "select F,G,H,I,M,O,AO,Q,S,U,W,Y, G+H+I+M+O+AO+Q+S+U+W+Y WHERE A='Tael' OR A<=12 ORDER BY A desc label G+H+I+M+O+Q+S+U+W+Y 'Total'",
             myChartWidth: 6,
             myChartHeight: 4,
             isStacked: true,
