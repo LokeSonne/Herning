@@ -861,7 +861,8 @@ function addMyDrillDownChart3(options) {
             myShowLegend: true,
             myChartType: "line",
             myChartName: "chart2_1",
-            myCaption: "Unge offentligt forsørgede (andel af AS)"
+            myCaption: "Unge offentligt forsørgede (andel af AS)",
+            myNumberDecimalPoints: 1
         });
         addMyUniChart({
             db: db2,
