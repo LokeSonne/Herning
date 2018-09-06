@@ -90,7 +90,7 @@ function addMyUniChart(myOptions) {
                     seriesStacked: isStacked,
                     seriesDisplayType: myChartType,
                     seriesColor: seriesColorArray[j - 1],
-                    numberDecimalPoints: 4
+                    numberDecimalPoints: myNumberDecimalPoints
                 }
                 if (arrayHeadings[j - 1] === "Total") {
                     seriesOptions.seriesDisplayType = 'line';
