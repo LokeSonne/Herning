@@ -1,13 +1,40 @@
 ﻿'use strict';
-google.load('visualization',
-                    '1',
-                    //{ callback: function() {self.initialize(); },
-                        //Behøver ikke at loade nedenstående packages, da google.charts ikke benyttes
-                       {
-                           packages: ['table', 'map', 'corechart']
-                       });
 
-//google.charts.load('41', { packages: ['corechart'] });
+
+// google.charts.load('41', { packages: ['corechart'] });
+
+// function loadGoogle() {
+//     await google.load('visualization',
+//         '1',
+//         { callback: function() {self.initialize(); },
+//         //Behøver ikke at loade nedenstående packages, da google.charts ikke benyttes
+//         {
+//             packages: ['table', 'map', 'corechart']
+//         });
+// }
+
+// var initializeGoogle = new Promise((resolutionFunc, rejectionFunc) => {
+//     resolutionFunc(google.charts.load('current', { packages: ['corechart'] });
+//     google.charts.setOnLoadCallback(drawChart););
+// });
+
+
+// var initializeGoogle = new Promise(
+//     function (resolve, reject) {
+//         google.charts.load('current', { packages: ['corechart'] });
+//         var googleIsLoaded = false;
+//         google.charts.setOnLoadCallback(function () { googleIsLoaded = true });
+//         if (googleIsLoaded) {
+//             resolve(); // fulfilled
+//         } else {
+//             var reason = new Error('not loaded');
+//             reject(reason); // reject
+//         }
+//     }
+// );
+
+// initializeGoogle;
+
 
 //-------Chart functions
 
@@ -791,6 +818,7 @@ function addMyDrillDownChart3(options) {
 
 }
 
+function load() {
     rf.StandaloneDashboard(function (tdb) {
         var _ = rf._;
         tdb.setDashboardTitle('Herning: Beskæftigelsesområdet');
@@ -1059,3 +1087,11 @@ function addMyDrillDownChart3(options) {
         });
 
     }, { tabbed: true });
+}
+
+if (!google.charts || !google.visualization) {
+    google.charts.load('current', { packages: ['corechart'] });
+    google.charts.setOnLoadCallback(load);
+} else {
+    load
+}
